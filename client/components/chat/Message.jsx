@@ -1,9 +1,7 @@
 import React from "react";
 
 function Message(props) {
-
     return <>
-
         <div
             style={{
                 width: "100%",
@@ -17,11 +15,11 @@ function Message(props) {
                     style={{
                         height:"30px"
                     }}
-                    src={"https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c"}/>
+                    src={props.message.picture}/>
             </div>
             <div><p
                 style={{padding:"5px"}}
-            >{props.message.sender}:</p></div> {/*TODO change to nickname*/}
+            >{props.message.nickname}:</p></div> {/*TODO change to nickname*/}
 
 
             <div>

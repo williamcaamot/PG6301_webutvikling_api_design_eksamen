@@ -23,7 +23,7 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
         }else{
 
             try {
-                data.bio = "My personal bio";
+                data.bio = "Som alle andre på denne siden, er jeg en STOR fan av online chat-rom!";
                 data.nickname = data.given_name || data.givenname;
                 await db.collection("users").insertOne(data);
             } catch (e) {

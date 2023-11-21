@@ -18,7 +18,7 @@ function chatApi(db, sockets) {
         }
     })
     router.post("/chatroom/:id", async(req, res) => {
-        console.log("Someone sending message"); //TODO make the message more advanced with nickname etc - MIDDLEWARE FIRST!!
+        console.log("Someone sending message");
         try {
             if (!req.user) {
                 res.status(401);
@@ -28,9 +28,10 @@ function chatApi(db, sockets) {
             console.log(req.body)
             const message = {
                 sender: req.user.email,
+                nickname: req.user.nickname,
+                picture: req.user.picture,
                 message: req.body.message,
                 time: new Date(),
-                //TODO add nickname
             }
             console.log(message);
             const id = new ObjectId(req.params.id);

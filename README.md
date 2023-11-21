@@ -10,3 +10,7 @@ Can be easier to handle auth with a post request to server?
 
 
 MongoDB was at times REALLY slow today, when it was really slow the checking for exisiting chatrooms didn't work.. If it's posisble to add multiples of the same chatroom, that's because of mongodb being slow..
+
+
+### Kjente feil:
+- Dersom en bruker endrer brukernavn, er det ikke satt opp relasjoner i databsen slik at brukernavnet oppdaters på meldinger som tidligere er sendt.
