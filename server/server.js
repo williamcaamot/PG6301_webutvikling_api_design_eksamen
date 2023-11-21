@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import * as path from "path";
 import loginApi from "./api/loginApi.js";
+import {userinfoMiddleware} from "./api/userInfoMiddleware.js";
 
 const app = express();
 const port = 3002;
@@ -17,7 +18,7 @@ app.use(cookieParser(process.env.COOKIE_PARSER_SECRET));
 const client = new MongoClient(process.env.MONGODB_URI);
 const db = client.db("examwebandapi");
 
-
+app.use(userinfoMiddleware());
 app.use("/api/v1", loginApi(db));
 
 
