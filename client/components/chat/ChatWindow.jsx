@@ -5,7 +5,7 @@ import Message from "./Message.jsx";
 
 
 function ChatWindow(props) {
-
+    console.log("Loading chat window");
 
     const [update, setUpdated] = useState();
     const [ws, setWs] = useState();
@@ -52,7 +52,7 @@ function ChatWindow(props) {
 
     useEffect(() => {
         getMessages();
-    }, [update]);
+    }, [update, props.acticeChatRoom]);
 
     return <>
         <div style={{width:"100%", flexWrap:"wrap"}}>

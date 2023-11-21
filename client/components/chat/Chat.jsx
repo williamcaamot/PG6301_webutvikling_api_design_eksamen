@@ -42,7 +42,7 @@ function Chat() {
                         <div style={{width: "100%", display: "flex", flexWrap: "nowrap"}}>
                             <h2>Available chatrooms:</h2>
                         </div>
-                        <div style={{width:"90%"}}> {/*TODO SHOULD BE ABLE TO BE 100% */}
+                        <div style={{width:"100%"}}> {/*TODO SHOULD BE ABLE TO BE 100% */}
                             {chatRooms && chatRooms.map(e => {
                                 return (<ChatRoomListing
                                         title={e.title}

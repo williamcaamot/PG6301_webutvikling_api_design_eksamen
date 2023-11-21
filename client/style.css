@@ -5,6 +5,7 @@ Colors by: https://www.realtimecolors.com/?colors=180202-fafafa-ff6d4d-e6e6e5-d1
 * {
     margin: 0;
     border-collapse: collapse;
+    box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: light) {
@@ -136,10 +137,9 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 
 .chatRooms {
-    display: flex;
-    flex-wrap: wrap;
     width: 25%;
     border: 1px solid green;
+
 }
 
 .chatWindow {
