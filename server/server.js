@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import * as path from "path";
 import loginApi from "./api/loginApi.js";
 import {userinfoMiddleware} from "./api/userInfoMiddleware.js";
+import chatApi from "./api/chatApi.js";
 
 const app = express();
 const port = 3002;
@@ -20,6 +21,7 @@ const db = client.db("examwebandapi");
 
 app.use(userinfoMiddleware());
 app.use("/api/v1", loginApi(db));
+app.use("/api/v1", chatApi(db));
 
 
 app.use(express.static("../client/dist/"));

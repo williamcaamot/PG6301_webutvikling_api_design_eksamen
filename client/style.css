@@ -127,3 +127,15 @@ h1,h2,h3,h4,h5,h6,p,span{
 .googleLoginButton:hover{
     background-color: #b72f23;
 }
+
+
+
+.chatRooms{
+    display: flex;
+    width: 33%;
+}
+
+.chatWindow{
+    display: flex;
+    width: 66%;
+}

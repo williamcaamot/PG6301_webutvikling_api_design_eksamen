@@ -5,6 +5,8 @@ import Header from "./Header.jsx";
 import Home from "./home/Home.jsx";
 import GoogleLoginCallback from "./login/GoogleLoginCallback.jsx";
 import EntraIdLoginCallback from "./login/EntraIdLoginCallback.jsx";
+import Chat from "./chat/Chat.jsx";
+import Profile from "./profile/Profile.jsx";
 
 
 export const AppContext = createContext();
@@ -37,6 +39,8 @@ export function App() {
             <Route path={"/login/callback/entraid"} element={<EntraIdLoginCallback/>}/>
             <Route path={"login/callback/google"} element={<GoogleLoginCallback/>}/>
             <Route path={"/login"} element={<Login/>}/>
+            <Route path={"/profile"} element={<Profile/>}/>
+            <Route path={"/chat"} element={<Chat/>}/>
             <Route path={"/"} element={<Home/>}/>
         </Routes>
 

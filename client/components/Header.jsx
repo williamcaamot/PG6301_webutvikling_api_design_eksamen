@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
+import {AppContext} from "./App.jsx";
 
 function Header() {
+
+    const { user } = useContext(AppContext);
+
     return <>
         <div className={"flexWrapper"}>
             <div className={"headerWrapper"}>
@@ -11,12 +15,17 @@ function Header() {
                 <div>
                     <nav>
                         <Link to="/" className={"mainMenuLink"}>Hjem</Link>
-                        <Link to="/" className={"mainMenuLink"}>Chat</Link>
+                        <Link to="/chat" className={"mainMenuLink"}>Chat</Link>
 
                     </nav>
                 </div>
                 <div>
-                    <Link to="/login" className={"mainMenuLink"}>Logg inn</Link>
+                    {user ?
+                        <Link to="/profile" className={"mainMenuLink"}>Velkommen, {user.name}</Link>
+                        :
+                        <Link to="/login" className={"mainMenuLink"}>Logg inn</Link>
+                    }
+
                 </div>
             </div>
         </div>
