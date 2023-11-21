@@ -75,6 +75,27 @@ function loginAPI(db) {
         res.sendStatus(204);
     });
 
+
+    userRouter.get("/profile/:email", async (req, res)=>{
+        console.log("fetching user");
+        try{
+
+            const email = req.params.email;
+            if(await db.collection("users").findOne({ email: email })){
+                const data = await db.collection("users").findOne({ email: email });
+                res.status(200);
+                res.json({message:"Successfully found user", data: userDetails(data)});
+            } else{
+                res.status(404);
+                res.json({message:"Could not find user"});
+            }
+
+        } catch (e){
+            res.status(404);
+            res.json("Internal server error");
+        }
+    })
+
     return userRouter;
 }
 

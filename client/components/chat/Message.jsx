@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 function Message(props) {
     return <>
@@ -7,21 +8,30 @@ function Message(props) {
                 width: "100%",
                 display: "flex",
                 flexWrap: "nowrap",
-                alignItems:"center",
+                alignItems: "center",
             }}
         >
-            <div>
-                <img
-                    style={{
-                        height:"30px"
-                    }}
-                    src={props.message.picture}/>
+            <div
+                style={{
+                    display: "flex",
+                    flexWrap: "nowrap",
+                    alignItems: "center",
+                }}>
+                <Link to={`/profile/${props.message.sender}`}
+                style={{display:"flex"}}>
+                    <div>
+                        <img
+                            style={{
+                                height: "30px"
+                            }}
+                            src={props.message.picture}/>
+                    </div>
+                    <div><p
+                        style={{padding: "5px"}}
+                    >{props.message.nickname}:</p></div>
+
+                </Link>
             </div>
-            <div><p
-                style={{padding:"5px"}}
-            >{props.message.nickname}:</p></div> {/*TODO change to nickname*/}
-
-
             <div>
                 <p>{props.message.message}</p>
             </div>

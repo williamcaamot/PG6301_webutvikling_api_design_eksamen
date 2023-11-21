@@ -1,37 +1,16 @@
-import React, {useContext, useState} from "react";
-import {AppContext} from "../App.jsx";
-import UserProfile from "./UserProfile.jsx";
-import {useNavigate} from "react-router-dom";
+import React from "react";
 
-function Profile() {
-    const navigate = useNavigate();
-    const {user, setUser} = useContext(AppContext);
-    const [errorMessage, setErrorMessage] = useState();
+function Profile(props) {
+    console.log(props);
+    if (props.user) return (
+        <div className={"userProfile"}>
+            <img src={props.user.picture} alt="User Profile" />
+            <p>Kallenavn: {props.user.nickname} </p>
+            <p>Fult navn: {props.user.name} {props.user.family_name}</p>
+            <p>E-post: {props.user.email}</p>
+            <p>Om meg: {props.user.bio}</p>
 
-    async function handleLogout(){
-        try{
-            await fetch("/api/v1/login", {
-                method: "DELETE"
-            });
-            setUser(null);
-            navigate("/");
-        }catch (e){
-            setErrorMessage(e.message)
-        }
-    }
-
-    return <>
-    <div className={"pageContentWrapper"}>
-        <div className={"innerWrapper"}>
-            <UserProfile
-                user={user}/>
-            <div style={{width:"100%"}}>
-            <button onClick={handleLogout}>Logg ut</button>
-            </div>
-    </div>
-
-    </div>
-</>
+        </div>
+    );
 }
-
 export default Profile;

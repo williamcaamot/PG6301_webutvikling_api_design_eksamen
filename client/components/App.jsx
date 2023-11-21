@@ -6,9 +6,10 @@ import Home from "./home/Home.jsx";
 import GoogleLoginCallback from "./login/GoogleLoginCallback.jsx";
 import EntraIdLoginCallback from "./login/EntraIdLoginCallback.jsx";
 import Chat from "./chat/Chat.jsx";
-import Profile from "./profile/Profile.jsx";
+import PersonalProfilePage from "./profile/PersonalProfilePage.jsx";
 import AddNewChatroom from "./chat/AddNewChatroom.jsx";
-import UserProfile from "./profile/UserProfile.jsx";
+import Profile from "./profile/Profile.jsx";
+import ExternalProfilePage from "./profile/ExternalProfilePage.jsx";
 
 
 export const AppContext = createContext();
@@ -41,8 +42,8 @@ export function App() {
             <Route path={"/login/callback/entraid"} element={<EntraIdLoginCallback/>}/>
             <Route path={"login/callback/google"} element={<GoogleLoginCallback/>}/>
             <Route path={"/login"} element={<Login/>}/>
-            <Route path={"/profile"} element={<Profile/>}/> {/*PERSONAL*/}
-            <Route path={"/profile/:email"} element={<UserProfile/>}/> {/*SEE OTHERS PROFILE*/}
+            <Route path={"/profile"} element={<PersonalProfilePage/>}/> {/*PERSONAL*/}
+            <Route path={"/profile/:email"} element={<ExternalProfilePage/>}/> {/*SEE OTHERS PROFILE*/}
             <Route path={"/chat"} element={<Chat/>}/>
             <Route path={"/addnewchatroom"} element={<AddNewChatroom/>}/>
             <Route path={"/"} element={<Home/>}/>
