@@ -55,9 +55,9 @@ function Chat() {
 
 
                     <div className={"chatWindow"}>
-                        <ChatWindow
-                        acticeChatRoom={activeChatRoom}
-                        />
+                        {activeChatRoom && <ChatWindow
+                            acticeChatRoom={activeChatRoom}
+                        />}
                     </div>
 
 

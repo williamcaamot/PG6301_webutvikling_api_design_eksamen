@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from "react";
 import ErrorMessage from "../globals/ErrorMessage.jsx";
+import {useFetcher} from "react-router-dom";
+import Message from "./Message.jsx";
 
 
 function ChatWindow(props) {
+
 
 
     const [messages, setMessages] = useState([]);
@@ -10,14 +13,13 @@ function ChatWindow(props) {
 
     const [errorMessage, setErrorMessage] = useState();
 
-    async function getMessages(){
-        try{
+    async function getMessages() {
+        try {
             const res = await fetch(`/api/v1/chatroom/${props.acticeChatRoom}`);
             const {message, data} = await res.json();
-            console.log(data);
             setMessages(data.messages)
-        }
-        catch (e) {
+            setErrorMessage(null);
+        } catch (e) {
             setErrorMessage(e.message)
         }
     }
@@ -26,25 +28,40 @@ function ChatWindow(props) {
     async function handleSendMessage(e) {
         e.preventDefault();
 
+        const res = await fetch(`/api/v1/chatroom/${props.acticeChatRoom}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({message: newMessage})
+        })
         setNewMessage("");
     }
 
+
     useEffect(() => {
         getMessages();
-    }, [props.acticeChatRoom]);
+    }, []);
 
     return <>
+        <div style={{width:"100%", flexWrap:"wrap"}}>
         <ErrorMessage message={errorMessage}/>
+        <div style={{width:"100%"}}>
         {messages && messages.map(e => {
+            console.log(e);
             return (
-            <p>Test</p>
+                <Message message={e}/>
             )
         })
         }
-        <form onSubmit={handleSendMessage}>
-            <input value={newMessage} onInput={e => setNewMessage(e.target.value)}/>
-            <button>Send message</button>
-        </form>
+        </div>
+        <div style={{width:"100%"}}>
+            <form onSubmit={handleSendMessage}>
+                <input value={newMessage} onInput={e => setNewMessage(e.target.value)}/>
+                <button>Send message</button>
+            </form>
+        </div>
+        </div>
     </>
 }
 

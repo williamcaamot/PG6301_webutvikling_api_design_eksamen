@@ -20,17 +20,26 @@ function chatApi(db) {
     router.post("/chatroom/:id", async(req, res) => {
         console.log("Someone sending message"); //TODO make the message more advanced with nickname etc - MIDDLEWARE FIRST!!
         try {
+            if (!req.user) {
+                res.status(401);
+                res.json({message: "You must be logged in to send messages!"});
+                return;
+            }
+            console.log(req.body)
+            const message = {
+                sender: req.user.email,
+                message: req.body.message,
+                time: new Date(),
+                //TODO add nickname
+            }
+            console.log(message);
             const id = new ObjectId(req.params.id);
-            const data = await db.collection("chatrooms").findOne( {_id: id});
-
             let resdata = await db.collection("chatrooms").updateOne(
-                { _id: id }, // The filter to match the document you want to update
-                { $set: movie } // The update document
+                { _id: id }, // Replace with the actual _id of the document
+                { $push: { messages: message } }
             );
-
-
-            res.status(200);
-            res.json({message: "Success", data: data});
+            res.status(200); //TODO fix status code
+            res.json({message: "Success", data: resdata});
         } catch (e) {
             res.status(404)
             res.json({message: "Something went wrong in the server, message: " + e.message});
