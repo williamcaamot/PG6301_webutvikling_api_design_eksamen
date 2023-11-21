@@ -62,13 +62,39 @@ h1,h2,h3,h4,h5,h6,p,span{
 }
 
 .entraIdLoginButton{
-    background-color: #0078D4;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-family: Segoe UI, sans-serif;
-    font-weight: 500;
-    display: inline-block;
-    text-align: center;
+    display:flex;
+    width:200px;
+    align-items:center;
+    justify-content:center;
+    background-color:#0078D4;
+    color:white;
+    padding: 20px;
+    border-radius:3px;
+    text-decoration:none;
+    font-family: arial, sans-serif;
+    font-weight:800;
+    font-size:16px;
+    text-align:center;
+}
+.googleLoginButton{
+    display:flex;
+    width:200px;
+    align-items:center;
+    justify-content:center;
+    background-color:#DB4437;
+    color:white;
+    padding: 20px;
+    border-radius:3px;
+    text-decoration:none;
+    font-family: arial, sans-serif;
+    font-weight:800;
+    font-size:16px;
+    text-align:center;
+}
+
+.entraIdLoginButton:hover{
+    background-color: #025ea4;
+}
+.googleLoginButton:hover{
+    background-color: #b72f23;
 }

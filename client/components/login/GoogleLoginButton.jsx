@@ -7,7 +7,7 @@ function GoogleLoginButton({applicationConfig}) {
     async function loadAuthorizationUrl() {
         const {openid_configuration, client_id} = applicationConfig;
         const {authorization_endpoint} = await fetchJSON(openid_configuration);
-        const redirect_uri = window.location.origin + "/login/callback";
+        const redirect_uri = window.location.origin + "/login/callback/google";
         setAuthorizationUrl(
             authorization_endpoint +
             "?" +
@@ -26,27 +26,8 @@ function GoogleLoginButton({applicationConfig}) {
 
     return <>
         <div style={{padding:"15px"}}>
-            <a href={authorizationUrl} style={{
-                display:"flex",
-                width:"200px",
-                alignItems:"center",
-                justifyContent:"center",
-                backgroundColor: '#DB4437', // Google red color
-                color: 'white',
-                padding: '10px 20px',
-                borderRadius: '3px',
-                textDecoration: 'none',
-                fontFamily: 'Roboto, sans-serif', // Google's font
-                fontWeight: '500',
-                fontSize: '16px',
-                textAlign: 'center',
-                boxShadow: '0 2px 4px 0 rgba(0,0,0,.25)'
-            }}>
-                Log in with Google <img
-                style={{
-                    width:"30px",
-                    paddingLeft:"20px"
-                }}src={"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Google_account_icon.svg/1606px-Google_account_icon.svg.png"}/>
+            <a href={authorizationUrl} className={"googleLoginButton"}>
+                Log in with Google
             </a>
         </div>
     </>
