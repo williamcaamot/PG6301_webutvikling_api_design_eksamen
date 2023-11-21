@@ -8,30 +8,32 @@ function PersonalProfilePage() {
     const {user, setUser} = useContext(AppContext);
     const [errorMessage, setErrorMessage] = useState();
 
-    async function handleLogout(){
-        try{
+    async function handleLogout() {
+        try {
             await fetch("/api/v1/login", {
                 method: "DELETE"
             });
             setUser(null);
             navigate("/");
-        }catch (e){
+        } catch (e) {
             setErrorMessage(e.message)
         }
     }
 
     return <>
-    <div className={"pageContentWrapper"}>
-        <div className={"innerWrapper"}>
-            <Profile
-                user={user}/>
-            <div style={{width:"100%"}}>
-            <button onClick={handleLogout}>Logg ut</button>
+        <div className={"pageContentWrapper"}>
+            <div className={"innerWrapper"}>
+                <Profile
+                    user={user}/>
+                <div style={{width: "100%", paddingTop:"20px"}}>
+                    <button onClick={handleLogout}>Logg ut</button>
+                    <button>Rediger profil</button>
+                    <button>Se mine chat-rom</button>
+                </div>
             </div>
-    </div>
 
-    </div>
-</>
+        </div>
+    </>
 }
 
 export default PersonalProfilePage;

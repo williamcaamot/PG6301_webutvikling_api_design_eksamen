@@ -79,7 +79,11 @@ function loginAPI(db) {
     userRouter.get("/profile/:email", async (req, res)=>{
         console.log("fetching user");
         try{
-
+            if(!req.user){
+                res.status(401);
+                res.json({message:"You must be logged in to view this"});
+                return
+            }
             const email = req.params.email;
             if(await db.collection("users").findOne({ email: email })){
                 const data = await db.collection("users").findOne({ email: email });
@@ -89,7 +93,6 @@ function loginAPI(db) {
                 res.status(404);
                 res.json({message:"Could not find user"});
             }
-
         } catch (e){
             res.status(404);
             res.json("Internal server error");
