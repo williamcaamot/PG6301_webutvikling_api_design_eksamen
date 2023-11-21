@@ -31,3 +31,44 @@ h1,h2,h3,h4,h5,h6,p,span{
     color: var(--text-color);
     font-family: arial, sans-serif;
 }
+
+.flexWrapper{
+    width: 100%;
+    display: flex;
+}
+
+.headerWrapper{
+    width: 100%;
+    display: flex;
+}
+.headerWrapper div{
+    padding: 20px;
+    display: flex;
+    flex-basis: 33%;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.mainMenuLink{
+    padding: 20px;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    font-family: arial, sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.mainMenuLink:hover{
+    background-color: var(--accent-color);
+}
+
+.entraIdLoginButton{
+    background-color: #0078D4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: Segoe UI, sans-serif;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+}
