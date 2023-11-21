@@ -5,6 +5,9 @@ import ChatWindow from "./ChatWindow.jsx";
 function Chat() {
 
 
+
+
+
     const [chatRooms, setChatRooms] = useState([]);
 
     const [activeChatRoom, setActiveChatRoom] = useState(null);
@@ -54,7 +57,7 @@ function Chat() {
                     </div>
 
 
-                    <div className={"chatWindow"}>
+                    <div className={"chatWindow"} style={{padding:"15px"}}>
                         {activeChatRoom && <ChatWindow
                             acticeChatRoom={activeChatRoom}
                         />}

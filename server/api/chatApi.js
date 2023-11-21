@@ -2,7 +2,7 @@ import express from "express";
 import {ObjectId} from "mongodb";
 
 
-function chatApi(db) {
+function chatApi(db, sockets) {
     const router = express.Router();
 
     router.get("/chatroom/:id", async(req, res) => {
@@ -35,9 +35,12 @@ function chatApi(db) {
             console.log(message);
             const id = new ObjectId(req.params.id);
             let resdata = await db.collection("chatrooms").updateOne(
-                { _id: id }, // Replace with the actual _id of the document
+                { _id: id },
                 { $push: { messages: message } }
             );
+            for(const s of sockets){
+                s.send(`Updated ${new Date()}`);
+            }
             res.status(200); //TODO fix status code
             res.json({message: "Success", data: resdata});
         } catch (e) {

@@ -7,6 +7,17 @@ import Message from "./Message.jsx";
 function ChatWindow(props) {
 
 
+    const [update, setUpdated] = useState();
+    const [ws, setWs] = useState();
+
+    useEffect(() => {
+        const ws = new WebSocket(window.location.origin.replace(/^http/, "ws"));
+        setWs(ws);
+        ws.onmessage = (event) => {
+            console.log(event.data);
+            setUpdated(event.data);
+        }
+    }, []);
 
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
@@ -41,14 +52,13 @@ function ChatWindow(props) {
 
     useEffect(() => {
         getMessages();
-    }, []);
+    }, [update]);
 
     return <>
         <div style={{width:"100%", flexWrap:"wrap"}}>
         <ErrorMessage message={errorMessage}/>
         <div style={{width:"100%"}}>
         {messages && messages.map(e => {
-            console.log(e);
             return (
                 <Message message={e}/>
             )
