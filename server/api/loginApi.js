@@ -85,7 +85,9 @@ function userDetails(user){
         name: user.given_name || givenname,
         family_name: user.family_name || familyname,
         email: user.email,
-        picture: user.picture
+        picture: user.picture,
+        nickname: user.nickname,
+        bio: user.bio
     };
     return newUser;
 }

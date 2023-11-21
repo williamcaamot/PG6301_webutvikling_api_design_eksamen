@@ -12,7 +12,6 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
     if (res.ok) {
         const data = await res.json();
         if(await db.collection("users").findOne({email: data.email})){
-            console.log("Found user");
             try { //TODO this needs some rework if it's supposed to work if someone changes their openid account details...
                 const userFromDb = await db.collection("users").findOne({email: data.email})
                 data.nickname = userFromDb.nickname;
@@ -31,7 +30,6 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
             }
 
         }
-        console.log(data);
 
         return data; //Goal is to return a user with additional information NOT from openid
     } else if (res.status !== 401) {
@@ -68,10 +66,4 @@ export function userinfoMiddleware(db) {
         }
         next();
     };
-}
-
-
-async function getUserDetails(db, email) {
-    var result = await db.collection("users").findOne({email: email})
-    console.log(result);
 }

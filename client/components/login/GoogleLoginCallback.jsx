@@ -30,7 +30,7 @@ function GoogleLoginCallback() {
         }
         const user = await res.json();
         setUser(user);
-        navigate("/");
+        console.log(user);
     }
 
     useEffect(() => {
