@@ -2,7 +2,10 @@
 Colors by: https://www.realtimecolors.com/?colors=180202-fafafa-ff6d4d-e6e6e5-d12600&fonts=Poppins-Poppins
  */
 
-*{margin: 0;}
+* {
+    margin: 0;
+    border-collapse: collapse;
+}
 
 @media (prefers-color-scheme: light) {
     body {
@@ -13,6 +16,7 @@ Colors by: https://www.realtimecolors.com/?colors=180202-fafafa-ff6d4d-e6e6e5-d1
         --accent-color: #d12600;
     }
 }
+
 @media (prefers-color-scheme: dark) {
     body {
         --text-color: #fde7e7;
@@ -23,25 +27,26 @@ Colors by: https://www.realtimecolors.com/?colors=180202-fafafa-ff6d4d-e6e6e5-d1
     }
 }
 
-body{
+body {
     background-color: var(--background-color);
 }
 
-h1,h2,h3,h4,h5,h6,p,span{
+h1, h2, h3, h4, h5, h6, p, span {
     color: var(--text-color);
     font-family: arial, sans-serif;
 }
 
-.flexWrapper{
+.flexWrapper {
     width: 100%;
     display: flex;
 }
 
-.headerWrapper{
+.headerWrapper {
     width: 100%;
     display: flex;
 }
-.headerWrapper div{
+
+.headerWrapper div {
     padding: 20px;
     display: flex;
     flex-basis: 33%;
@@ -49,7 +54,7 @@ h1,h2,h3,h4,h5,h6,p,span{
     justify-content: flex-start;
 }
 
-.mainMenuLink{
+.mainMenuLink {
     padding: 20px;
     color: var(--text-color);
     background-color: var(--primary-color);
@@ -57,7 +62,8 @@ h1,h2,h3,h4,h5,h6,p,span{
     text-decoration: none;
     text-transform: uppercase;
 }
-.mainMenuLink:hover{
+
+.mainMenuLink:hover {
     background-color: var(--accent-color);
 }
 
@@ -86,56 +92,93 @@ h1,h2,h3,h4,h5,h6,p,span{
 }
 
 
-
-
-
-
-.entraIdLoginButton{
-    display:flex;
-    width:200px;
-    align-items:center;
-    justify-content:center;
-    background-color:#0078D4;
-    color:white;
+.entraIdLoginButton {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    background-color: #0078D4;
+    color: white;
     padding: 20px;
-    border-radius:3px;
-    text-decoration:none;
+    border-radius: 3px;
+    text-decoration: none;
     font-family: arial, sans-serif;
-    font-weight:800;
-    font-size:16px;
-    text-align:center;
-}
-.googleLoginButton{
-    display:flex;
-    width:200px;
-    align-items:center;
-    justify-content:center;
-    background-color:#DB4437;
-    color:white;
-    padding: 20px;
-    border-radius:3px;
-    text-decoration:none;
-    font-family: arial, sans-serif;
-    font-weight:800;
-    font-size:16px;
-    text-align:center;
+    font-weight: 800;
+    font-size: 16px;
+    text-align: center;
 }
 
-.entraIdLoginButton:hover{
+.googleLoginButton {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    background-color: #DB4437;
+    color: white;
+    padding: 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: arial, sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    text-align: center;
+}
+
+.entraIdLoginButton:hover {
     background-color: #025ea4;
 }
-.googleLoginButton:hover{
+
+.googleLoginButton:hover {
     background-color: #b72f23;
 }
 
 
-
-.chatRooms{
+.chatRooms {
     display: flex;
-    width: 33%;
+    flex-wrap: wrap;
+    width: 25%;
+    border: 1px solid green;
 }
 
-.chatWindow{
+.chatWindow {
     display: flex;
-    width: 66%;
+    width: 75%;
+}
+
+
+.successMessage {
+    background-color: #ddffdd;
+    border-left: 6px solid #4CAF50;
+    padding: 12px;
+    color: #155724;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.errorMessage {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    padding: 12px;
+    color: #d8000c;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chatRoomListing {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+
+
+}
+
+.chatRoomListing p, h3 {
+    color: var(--secondary-color)
 }

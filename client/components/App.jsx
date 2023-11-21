@@ -7,6 +7,7 @@ import GoogleLoginCallback from "./login/GoogleLoginCallback.jsx";
 import EntraIdLoginCallback from "./login/EntraIdLoginCallback.jsx";
 import Chat from "./chat/Chat.jsx";
 import Profile from "./profile/Profile.jsx";
+import AddNewChatroom from "./chat/AddNewChatroom.jsx";
 
 
 export const AppContext = createContext();
@@ -41,6 +42,7 @@ export function App() {
             <Route path={"/login"} element={<Login/>}/>
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/chat"} element={<Chat/>}/>
+            <Route path={"/addnewchatroom"} element={<AddNewChatroom/>}/>
             <Route path={"/"} element={<Home/>}/>
         </Routes>
 

@@ -1,5 +1,4 @@
 import React from "react";
-import "./SuccessMessage.css"
 
 function SuccessMessage(props) {
     if (props.message) {
