@@ -7,7 +7,7 @@
     "dev": "concurrently npm:dev:client npm:dev:server",
     "dev:client": "cd client && npx parcel watch index.html",
     "dev:server": "cd server && npx nodemon server.js",
-    "postinstall": "npm install && npm run install:client && npm run install:server",
+    "postinstall": "npm run install:client && npm run install:server",
     "install:client": "cd client && npm install --include=dev",
     "install:server": "cd server && npm install",
     "build": "npm run prettier && cd client && npx parcel build index.html",
