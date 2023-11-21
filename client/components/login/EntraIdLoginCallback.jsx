@@ -8,6 +8,8 @@ function EntraIdLoginCallback({}) {
     const [error, setError] = useState();
     const { setUser } = useContext(AppContext);
 
+    const [errorMessage, setErrorMessage] = useState()
+    
     const client_id = "57350161-fcb3-43d0-a7e7-0c2ba9658b8e";
 
 
