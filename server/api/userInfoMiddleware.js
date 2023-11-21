@@ -1,7 +1,7 @@
 import fetchJSON from "./fetchJSON.js";
 import {Timestamp} from "mongodb";
 
-export async function fetchUserInfo(openid_configuration, access_token) {
+export async function fetchUserInfo(openid_configuration, access_token, db) {
 
     const {userinfo_endpoint} = await fetchJSON(openid_configuration);
     const res = await fetch(userinfo_endpoint, {
@@ -10,21 +10,24 @@ export async function fetchUserInfo(openid_configuration, access_token) {
         },
     });
     if (res.ok) {
-        return await res.json();
+        const data = await res.json();
+        console.log(data);
+        return data;
+
     } else if (res.status !== 401) {
         throw new Error("Failed to fetch userinfo " + res.statusCode);
     }
 }
 
-export function userinfoMiddleware() {
+export function userinfoMiddleware(db) {
     return async (req, res, next) => {
         const {access_token, login_provider} = req.cookies;
         if (access_token) {
             let user;
             if (login_provider === "google") {
-                user = await fetchUserInfo(process.env.GOOGLE_OPENID_CONFIGURATION, access_token);
+                user = await fetchUserInfo(process.env.GOOGLE_OPENID_CONFIGURATION, access_token, db);
             } else if (login_provider === "entraid") {
-                user = await fetchUserInfo(process.env.ENTRA_OPENID_CONFIGURATION, access_token);
+                user = await fetchUserInfo(process.env.ENTRA_OPENID_CONFIGURATION, access_token, db);
             }
             if (user) {
                 try {
@@ -37,6 +40,7 @@ export function userinfoMiddleware() {
 
                 } catch (e) {
                     console.log(e)
+
                 }
             }
         }

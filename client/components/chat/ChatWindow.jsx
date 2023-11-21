@@ -67,7 +67,7 @@ function ChatWindow(props) {
         </div>
         <div style={{width:"100%"}}>
             <form onSubmit={handleSendMessage}>
-                <input value={newMessage} onInput={e => setNewMessage(e.target.value)}/>
+                <input placeholder={"message"} value={newMessage} onInput={e => setNewMessage(e.target.value)}/>
                 <button>Send message</button>
             </form>
         </div>

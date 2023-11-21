@@ -70,6 +70,11 @@ function chatApi(db, sockets) {
                 res.json({message: "You must be logged in to add a chatroom"});
                 return;
             }
+            if(req.body.title.length < 5 || req.body.description < 5 ){
+                res.status(409);
+                res.json({message: "The title or description is not long enough (minimum 5 characters)"});
+                return;
+            }
             if(await db.collection("chatrooms").findOne({ title: req.body.title })){
                 console.log("Found exisiting chatroom");
                 res.status(409);

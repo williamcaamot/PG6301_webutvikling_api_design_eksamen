@@ -22,7 +22,7 @@ const client = new MongoClient(process.env.MONGODB_URI);
 const db = client.db("examwebandapi");
 
 
-app.use(userinfoMiddleware());
+app.use(userinfoMiddleware(db));
 app.use("/api/v1", loginApi(db));
 app.use("/api/v1", chatApi(db, sockets));
 

@@ -1,29 +1,37 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {AppContext} from "../App.jsx";
+import UserProfile from "./UserProfile.jsx";
+import {useNavigate} from "react-router-dom";
 
 function Profile() {
+    const navigate = useNavigate();
+    const {user, setUser} = useContext(AppContext);
+    const [errorMessage, setErrorMessage] = useState();
 
-
-    const {user} = useContext(AppContext);
+    async function handleLogout(){
+        try{
+            await fetch("/api/v1/login", {
+                method: "DELETE"
+            });
+            setUser(null);
+            navigate("/");
+        }catch (e){
+            setErrorMessage(e.message)
+        }
+    }
 
     return <>
-        <div className={"pageContentWrapper"}>
-            <div className={"innerWrapper"}>
-                <div style={{width:"100%"}}>
-                    <h2>{user && user.name} {user && user.family_name}</h2>
-                </div>
-                <div style={{width:"100%"}}>
-                    <p>E-post: {user && user.email}</p>
-                </div>
-                <div style={{width:"100%"}}>
-                    <p>Kallenavn</p>
-                </div>
-                <div style={{width:"100%"}}>
-                    <p>Bio:</p>
-                </div>
+    <div className={"pageContentWrapper"}>
+        <div className={"innerWrapper"}>
+            <UserProfile
+                user={user}/>
+            <div style={{width:"100%"}}>
+            <button onClick={handleLogout}>Logg ut</button>
             </div>
-        </div>
-    </>
+    </div>
+
+    </div>
+</>
 }
 
 export default Profile;

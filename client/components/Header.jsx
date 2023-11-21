@@ -20,7 +20,7 @@ function Header() {
 
                     </nav>
                 </div>
-                <div>
+                <div style={{flexDirection:"row-reverse"}}>
                     {user ?
                         <Link to="/profile" className={"mainMenuLink"}>Velkommen, {user.name}</Link>
                         :

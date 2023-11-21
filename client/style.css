@@ -86,12 +86,12 @@ h1, h2, h3, h4, h5, h6, p, span {
     width: 100%;
     max-width: 1600px;
     height: 100%;
+    flex-wrap: wrap;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     border-radius: 15px;
-    flex-wrap: wrap;
 }
 
 
@@ -138,7 +138,6 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 .chatRooms {
     width: 25%;
-    border: 1px solid green;
 
 }
 
@@ -152,37 +151,91 @@ h1, h2, h3, h4, h5, h6, p, span {
     background-color: #ddffdd;
     border-left: 6px solid #4CAF50;
     padding: 12px;
-    color: #155724;
     border-radius: 4px;
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.successMessage p{
+    color: #155724;
 }
 
 .errorMessage {
     background-color: #ffdddd;
     border-left: 6px solid #f44336;
     padding: 12px;
-    color: #d8000c;
     border-radius: 4px;
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+.errorMessage p{
+    color: #d8000c;
+}
 
 .chatRoomListing {
     width: 100%;
     padding: 20px;
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     border-radius: 10px;
     cursor: pointer;
 }
 .chatRoomListing:hover {
-    background-color: #a22002;
+    background-color: var(--accent-color);
 }
 
 .chatRoomListing p, h3 {
-    color: var(--secondary-color)
+    color: var(--text-color)
+}
+
+button{
+    background-color: var(--primary-color);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-family: arial, sans-serif;
+    font-size: 1.1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: var(--text-color)
+}
+
+button:hover{
+    background-color: var(--accent-color);
+}
+
+input{
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/*
+        STYLING FOR USER PROFILE COMPONENT
+ */
+.userProfile{
+    background-color: var(--primary-color);
+    width: 800px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    padding:20px;
+    border-radius:10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    margin:auto;
+}
+
+.userProfile img{
+    border-radius: 20px;
+    width: 100px;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.userProfile p{
+    padding: 10px;
 }
