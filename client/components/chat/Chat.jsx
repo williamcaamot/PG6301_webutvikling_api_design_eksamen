@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
 import ChatRoomListing from "./ChatRoomListing.jsx";
+import ChatWindow from "./ChatWindow.jsx";
 
 function Chat() {
 
 
     const [chatRooms, setChatRooms] = useState([]);
+
+    const [activeChatRoom, setActiveChatRoom] = useState(null);
 
     const [errorMessage, setErrorMessage] = useState();
 
@@ -18,6 +21,10 @@ function Chat() {
         } catch (e) {
             setErrorMessage(e.message);
         }
+    }
+
+    async function handleSelectChatRoom(id){
+        setActiveChatRoom(id);
     }
 
     useEffect(() => {
@@ -38,13 +45,22 @@ function Chat() {
                                         title={e.title}
                                         description={e.description}
                                         key={e._id}
+                                        id={e._id}
+                                        onSelectChatRoom={handleSelectChatRoom}
                                     />
                                 )
                             })}
                         </div>
                     </div>
+
+
                     <div className={"chatWindow"}>
+                        <ChatWindow
+                        acticeChatRoom={activeChatRoom}
+                        />
                     </div>
+
+
                 </div>
             </div>
         </div>

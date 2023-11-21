@@ -1,8 +1,43 @@
 import express from "express";
+import {ObjectId} from "mongodb";
 
 
 function chatApi(db) {
     const router = express.Router();
+
+    router.get("/chatroom/:id", async(req, res) => {
+        console.log("Someone getting chatroom by id");
+        try {
+            const id = new ObjectId(req.params.id);
+            const data = await db.collection("chatrooms").findOne( {_id: id});
+            res.status(200);
+            res.json({message: "Success", data: data});
+        } catch (e) {
+            res.status(404)
+            res.json({message: "Something went wrong in the server, message: " + e.message});
+        }
+    })
+    router.post("/chatroom/:id", async(req, res) => {
+        console.log("Someone sending message"); //TODO make the message more advanced with nickname etc - MIDDLEWARE FIRST!!
+        try {
+            const id = new ObjectId(req.params.id);
+            const data = await db.collection("chatrooms").findOne( {_id: id});
+
+            let resdata = await db.collection("chatrooms").updateOne(
+                { _id: id }, // The filter to match the document you want to update
+                { $set: movie } // The update document
+            );
+
+
+            res.status(200);
+            res.json({message: "Success", data: data});
+        } catch (e) {
+            res.status(404)
+            res.json({message: "Something went wrong in the server, message: " + e.message});
+        }
+    })
+
+
 
     router.get("/chatroom", async(req, res) => {
         try {
@@ -42,9 +77,11 @@ function chatApi(db) {
         } catch (e) {
             res.json({message: "Something went wrong in the server, message: " + e.message});
         }
-
-
     })
+
+
+
+
 
     return router;
 }

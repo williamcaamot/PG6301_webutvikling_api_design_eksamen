@@ -61,6 +61,8 @@ h1, h2, h3, h4, h5, h6, p, span {
     font-family: arial, sans-serif;
     text-decoration: none;
     text-transform: uppercase;
+    font-weight: 600;
+
 }
 
 .mainMenuLink:hover {
@@ -175,8 +177,10 @@ h1, h2, h3, h4, h5, h6, p, span {
     padding: 20px;
     background-color: var(--accent-color);
     border-radius: 10px;
-
-
+    cursor: pointer;
+}
+.chatRoomListing:hover {
+    background-color: #a22002;
 }
 
 .chatRoomListing p, h3 {
