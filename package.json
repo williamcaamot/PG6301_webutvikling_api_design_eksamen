@@ -1,0 +1,31 @@
+{
+  "name": "eksamenFrontend",
+  "version": "1.0.0",
+  "main": "hello.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd client && npx parcel watch index.html",
+    "dev:server": "cd server && npx nodemon server.js",
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install --include=dev",
+    "install:server": "cd server && npm install",
+    "build": "npm run prettier && cd client && npx parcel build index.html",
+    "start": "cd server && node server.js",
+    "check": "prettier --check .",
+    "prettier": "prettier --write .",
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "cd client && npm run test",
+    "test:server": "cd server && npm run test",
+    "ci":"npm run ci:client && npm run ci:server",
+    "ci:client": "cd client && npm install --include=dev",
+    "ci:server": "cd server && npm install --include=dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^8.2.1",
+    "prettier": "^3.0.3"
+  }
+}

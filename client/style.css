@@ -1,0 +1,33 @@
+/*
+Colors by: https://www.realtimecolors.com/?colors=180202-fafafa-ff6d4d-e6e6e5-d12600&fonts=Poppins-Poppins
+ */
+
+*{margin: 0;}
+
+@media (prefers-color-scheme: light) {
+    body {
+        --text-color: #180202;
+        --background-color: #fafafa;
+        --primary-color: #ff6d4d;
+        --secondary-color: #e6e6e5;
+        --accent-color: #d12600;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        --text-color: #fde7e7;
+        --background-color: #050505;
+        --primary-color: #b32100;
+        --secondary-color: #1a1a19;
+        --accent-color: #ff542e;
+    }
+}
+
+body{
+    background-color: var(--background-color);
+}
+
+h1,h2,h3,h4,h5,h6,p,span{
+    color: var(--text-color);
+    font-family: arial, sans-serif;
+}
