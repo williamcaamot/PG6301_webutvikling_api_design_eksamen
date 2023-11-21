@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import {AppContext} from "../App.jsx";
 import Profile from "./Profile.jsx";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function PersonalProfilePage() {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ function PersonalProfilePage() {
                     user={user}/>
                 <div style={{width: "100%", paddingTop:"20px"}}>
                     <button onClick={handleLogout}>Logg ut</button>
-                    <button>Rediger profil</button>
+                    <Link to={"/profile/edit"}><button>Rediger profil</button></Link>
                     <button>Se mine chat-rom</button>
                 </div>
             </div>

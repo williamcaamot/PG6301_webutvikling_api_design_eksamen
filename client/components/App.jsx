@@ -10,6 +10,8 @@ import PersonalProfilePage from "./profile/PersonalProfilePage.jsx";
 import AddNewChatroom from "./chat/AddNewChatroom.jsx";
 import Profile from "./profile/Profile.jsx";
 import ExternalProfilePage from "./profile/ExternalProfilePage.jsx";
+import editProfilePage from "./profile/EditProfilePage.jsx";
+import EditProfilePage from "./profile/EditProfilePage.jsx";
 
 
 export const AppContext = createContext();
@@ -46,6 +48,7 @@ export function App() {
             <Route path={"/profile/:email"} element={<ExternalProfilePage/>}/> {/*SEE OTHERS PROFILE*/}
             <Route path={"/chat"} element={<Chat/>}/>
             <Route path={"/addnewchatroom"} element={<AddNewChatroom/>}/>
+            <Route path={"/profile/edit"} element={<EditProfilePage/>}/>
             <Route path={"/"} element={<Home/>}/>
         </Routes>
 
