@@ -18,12 +18,12 @@ function loginAPI(db) {
 
     userRouter.post("/login/google", async (req, res) => {
         const {access_token} = req.body;
-        const user = await fetchUserInfo(openid_configuration, access_token);
+        const user = await fetchUserInfo(openid_configuration, access_token, db);
         if(user){
             res.cookie("access_token", access_token);
             res.cookie("login_provider","google");
             await db
-                .collection("users")
+                .collection("userLogins")
                 .insertOne({user: user, username: user.given_name, date: new Date()});
             res.status(201);
             res.json(userDetails(user));
@@ -46,12 +46,12 @@ function loginAPI(db) {
 
     userRouter.post("/login/entraid", async (req, res) => {
         const {access_token} = req.body;
-        const user = await fetchUserInfo(openid_configuration_entraid, access_token);
+        const user = await fetchUserInfo(openid_configuration_entraid, access_token, db);
         if(user){
             res.cookie("access_token", access_token);
             res.cookie("login_provider","entraid");
             await db
-                .collection("users")
+                .collection("userLogins")
                 .insertOne({user: user, username: user.givenname, date: new Date()});
             res.status(201);
             res.json(userDetails(user));

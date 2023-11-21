@@ -11,9 +11,29 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
     });
     if (res.ok) {
         const data = await res.json();
-        console.log(data);
-        return data;
+        if(await db.collection("users").findOne({email: data.email})){
+            console.log("Found user");
+            try { //TODO this needs some rework if it's supposed to work if someone changes their openid account details...
+                const userFromDb = await db.collection("users").findOne({email: data.email})
+                data.nickname = userFromDb.nickname;
+                data.bio = userFromDb.bio;
+            } catch (e) {
+                console.log(e.message);
+            }
+        }else{
 
+            try {
+                data.bio = "My personal bio";
+                data.nickname = data.given_name || data.givenname;
+                await db.collection("users").insertOne(data);
+            } catch (e) {
+                console.log(e.message);
+            }
+
+        }
+        console.log(data);
+
+        return data; //Goal is to return a user with additional information NOT from openid
     } else if (res.status !== 401) {
         throw new Error("Failed to fetch userinfo " + res.statusCode);
     }
@@ -35,7 +55,9 @@ export function userinfoMiddleware(db) {
                         name: user.given_name || givenname,
                         family_name: user.family_name || familyname,
                         email: user.email,
-                        picture: user.picture
+                        picture: user.picture,
+                        nickname: user.nickname,
+                        bio: user.bio
                     }
 
                 } catch (e) {
@@ -46,4 +68,10 @@ export function userinfoMiddleware(db) {
         }
         next();
     };
+}
+
+
+async function getUserDetails(db, email) {
+    var result = await db.collection("users").findOne({email: email})
+    console.log(result);
 }
