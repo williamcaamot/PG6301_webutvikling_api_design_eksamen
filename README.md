@@ -38,4 +38,5 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 
 ### Ressurser brukt:
 - https://stackoverflow.com/questions/68692385/mock-router-in-react-testing-library-and-jest
-- 
+- MongoDB Dokumentasjon på https://www.mongodb.com ble hyppig brukt.
+- Mye inspirasjon til testing og login funksjonalitet er hentet fra GH siden til kurset (https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming)

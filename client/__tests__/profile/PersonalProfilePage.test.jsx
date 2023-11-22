@@ -3,10 +3,9 @@ import {MemoryRouter} from "react-router-dom";
 import PersonalProfilePage from "../../components/profile/PersonalProfilePage.jsx";
 import {AppContext} from "../../components/App.jsx";
 
-describe("render external profile page, the page other users can see", () => {
+describe("render personal profile page", () => {
 
-    it("should fetch profile details and dispaly them", async () => {
-
+    it("should render profile details and chat rooms", async () => {
         const user = {
             _id: "655dd38a4c15f00c20bc3fcf",
             bio: "dawawddawJeg er kul",
@@ -54,6 +53,62 @@ describe("render external profile page, the page other users can see", () => {
         });
         expect(component).toMatchSnapshot();
     })
+
+    it("should render profile then sign out", async () => {
+
+        const user = {
+            _id: "655dd38a4c15f00c20bc3fcf",
+            bio: "dawawddawJeg er kul",
+            email: "williamcoucheronaamot@gmail.com",
+            family_name: "Coucheron-Aamot",
+            name: "William",
+            nickname: "WILLIAM123wwwww",
+            picture: "https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c",
+        }
+
+        const chatRooms = [{
+            _id: "655e00a9f595fb7c60770caa",
+            description: "dawadwadwadw",
+            messages: [],
+            owner: "williamcoucheronaamot@gmail.com",
+            title: "dawdwaadw"
+        }, {
+            _id: "655e02735da48dabbcbcb639",
+            description: "daadwdwa",
+            messages: [],
+            owner: "williamcoucheronaamot@gmail.com",
+            title: "dawdwaadw"
+        }];
+
+        async function setUser() {
+        }
+        let component;
+        await act(async () => {
+            component = renderer.create(
+                <AppContext.Provider value={{user, setUser}}>
+                    <MemoryRouter>
+                        <PersonalProfilePage
+
+                            handleLogout={() => {
+                            }}
+
+                            loadChatRooms={() => {
+                                chatRooms
+                            }}
+
+
+                        />
+                    </MemoryRouter>
+                </AppContext.Provider>);
+        });
+
+        await act(async() =>{
+            component.root.findAllByType("button")[0].props.onClick();
+        })
+
+        expect(component).toMatchSnapshot();
+    })
+
 })
 
 

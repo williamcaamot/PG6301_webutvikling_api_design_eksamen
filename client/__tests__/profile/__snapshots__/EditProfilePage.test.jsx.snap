@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`edit user component should must be signed in to edit 1`] = `
+<div
+  className="pageContentWrapper"
+>
+  <div
+    className="innerWrapper"
+  >
+    <h2>
+      Du må være logget inn for å kunne redigere profilen sin
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`edit user component should render the edit user component 1`] = `
+<div
+  className="pageContentWrapper"
+>
+  <div
+    className="innerWrapper"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <p>
+        Nickname: 
+        <input
+          onInput={[Function]}
+          value="WILLIAM123wwwww"
+        />
+      </p>
+      <p>
+        Bio: 
+        <input
+          onInput={[Function]}
+          value="dawawddawJeg er kul"
+        />
+      </p>
+      <button>
+        Oppdater
+      </button>
+      <a
+        href="/profile"
+        onClick={[Function]}
+      >
+        <button>
+          Avbryt, gå tilabke
+        </button>
+      </a>
+    </form>
+  </div>
+</div>
+`;

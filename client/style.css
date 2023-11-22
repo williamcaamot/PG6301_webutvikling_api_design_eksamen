@@ -45,14 +45,20 @@ h1, h2, h3, h4, h5, h6, p, span {
 .headerWrapper {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .headerWrapper div {
-    padding: 20px;
     display: flex;
-    flex-basis: 33%;
+    flex-basis: 100%;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+}
+.headerWrapper div nav {
+    display: flex;
+    justify-content: center;
+    flex-basis:100%;
+    background-color: var(--primary-color);
 }
 
 .mainMenuLink {

@@ -27,7 +27,6 @@ function PersonalProfilePage() {
 
     async function loadChatRooms(){
         try{
-            console.log(user.email);
             const res = await fetch(`/api/v1/chatroom/owner/${user.email}`);
             const {message, data} = await res.json();
             if(res.status !== 200){
@@ -52,7 +51,7 @@ function PersonalProfilePage() {
                     user={user}/>
                 <div style={{width: "100%", paddingTop:"20px"}}>
                     <button onClick={handleLogout}>Logg ut</button>
-                    <Link to={"/profile/edit"}><button>Rediger profil</button></Link>
+                    <Link to={"/profile/edit"}><button id={"editProfileButton"}>Rediger profil</button></Link>
 
                 </div>
                 <h2>Dine chat rom:</h2>
