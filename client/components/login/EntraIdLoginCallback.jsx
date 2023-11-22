@@ -56,7 +56,7 @@ function EntraIdLoginCallback({}) {
         const { message, data } = await res.json();
 
         if (res.status !== 201) {
-          setError(message);
+          setErrorMessage(message || "En ukjent feil har oppstått")
           return;
         }
         setSuccessMessage(message);
