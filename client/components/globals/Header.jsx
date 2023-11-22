@@ -21,7 +21,7 @@ function Header() {
                 Chat
               </Link>
               <Link to="/chatroom/add" className={"mainMenuLink"}>
-                Add new chat room
+                Legg til nytt chat rom
               </Link>
               {user ? (
                 <Link to="/profile" className={"mainMenuLink"}>

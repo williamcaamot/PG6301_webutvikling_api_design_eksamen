@@ -7,6 +7,7 @@ function Home() {
           <div style={{ width: "100%" }}>
             <h2>Velkommen til denne chatte appen!</h2>
           </div>
+          <p>Dette er eksamnsoppgave i Webutvikling & API Design! </p>
           <p>
             Her kan alle registrerte brukere chatte med hverandre i forskjellige
             chat rom.
