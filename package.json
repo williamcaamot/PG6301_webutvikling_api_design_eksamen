@@ -14,7 +14,7 @@
     "start": "cd server && node server.js",
     "check": "prettier --check .",
     "prettier": "prettier --write .",
-    "test": "npm run test:client && npm run test:server",
+    "test": "npm run test:server && npm run test:client",
     "test:client": "cd client && npm run test",
     "test:server": "cd server && npm run test",
     "ci": "npm run ci:client && npm run ci:server",
