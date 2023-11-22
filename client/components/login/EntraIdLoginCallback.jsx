@@ -12,18 +12,16 @@ function EntraIdLoginCallback({}) {
   const [error, setError] = useState();
   const { setUser } = useContext(AppContext);
 
-
-
   const client_id = "57350161-fcb3-43d0-a7e7-0c2ba9658b8e";
 
   async function handleCallback() {
-    try{
+    try {
       const hash = Object.fromEntries(
-          new URLSearchParams(window.location.hash.substring(1)),
+        new URLSearchParams(window.location.hash.substring(1)),
       );
       let { access_token, error, error_description, state, code } = hash;
       const { token_endpoint } = await fetchJSON(
-          "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration",
+        "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration",
       );
 
       if (state !== window.sessionStorage.getItem("state")) {
@@ -55,20 +53,19 @@ function EntraIdLoginCallback({}) {
             "content-type": "application/json",
           },
         });
-        const {message, data} = await res.json();
+        const { message, data } = await res.json();
 
         if (res.status !== 201) {
           setError(message);
-          return
+          return;
         }
         setSuccessMessage(message);
         setUser(data);
         navigate("/");
       }
-    }catch (e) {
-      setErrorMessage(e.message)
+    } catch (e) {
+      setErrorMessage(e.message);
     }
-
   }
 
   useEffect(() => {
@@ -81,7 +78,7 @@ function EntraIdLoginCallback({}) {
         <div className={"innerWrapper"}>
           <h2>Logging in with Entra ID... Please wait</h2>
           <ErrorMessage message={errorMessage} />
-          <SuccessMessage message={successMessage}/>
+          <SuccessMessage message={successMessage} />
         </div>
       </div>
     </>

@@ -11,9 +11,9 @@ function GoogleLoginCallback() {
   const [successMessage, setSuccessMessage] = useState();
 
   async function handleCallback() {
-    try{
+    try {
       const callbackParameters = Object.fromEntries(
-          new URLSearchParams(window.location.hash.substring(1)),
+        new URLSearchParams(window.location.hash.substring(1)),
       );
       const { access_token } = callbackParameters;
       const res = await fetch("/api/v1/login/google", {
@@ -23,7 +23,7 @@ function GoogleLoginCallback() {
           "content-type": "application/json",
         },
       });
-      const {message, data} = await res.json();
+      const { message, data } = await res.json();
       if (res.status !== 201) {
         setErrorMessage(message || "En ukjent feil har oppstått");
         return;
@@ -31,7 +31,7 @@ function GoogleLoginCallback() {
       setSuccessMessage(message);
       setUser(data);
       navigate("/");
-    }catch (e) {
+    } catch (e) {
       setErrorMessage(e.message);
     }
   }
@@ -48,7 +48,7 @@ function GoogleLoginCallback() {
             <h2>Logging in with Google... Please wait</h2>
           </div>
           <ErrorMessage message={errorMessage} />
-          <SuccessMessage message={successMessage}/>
+          <SuccessMessage message={successMessage} />
         </div>
       </div>
     </>

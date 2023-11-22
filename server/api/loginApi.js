@@ -32,15 +32,16 @@ function loginAPI(db) {
           signed: true,
           maxAge: 86400000,
         });
-        await db
-          .collection("userLogins")
-          .insertOne({
-            user: user,
-            username: user.given_name,
-            date: new Date(),
-          });
+        await db.collection("userLogins").insertOne({
+          user: user,
+          username: user.given_name,
+          date: new Date(),
+        });
         res.status(201);
-        res.json({message:"Successfully logged in", data:userDetails(user)});
+        res.json({
+          message: "Successfully logged in",
+          data: userDetails(user),
+        });
       } else {
         res.sendStatus(401);
       }
@@ -83,15 +84,16 @@ function loginAPI(db) {
           signed: true,
           maxAge: 86400000,
         });
-        await db
-          .collection("userLogins")
-          .insertOne({
-            user: user,
-            username: user.givenname,
-            date: new Date(),
-          });
+        await db.collection("userLogins").insertOne({
+          user: user,
+          username: user.givenname,
+          date: new Date(),
+        });
         res.status(201);
-        res.json({message:"Successfully logged in", data:userDetails(user)});
+        res.json({
+          message: "Successfully logged in",
+          data: userDetails(user),
+        });
       } else {
         res.sendStatus(401);
       }
