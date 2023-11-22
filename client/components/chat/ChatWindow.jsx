@@ -38,8 +38,13 @@ function ChatWindow(props) {
 
     async function handleSendMessage(e) {
         e.preventDefault();
+        if(newMessage.length === 0){
+            setErrorMessage("Meldingen må bestå av noe!");
+            return;
+        }
         ws.send(JSON.stringify({chatroomid: activeChatRoom, message:newMessage, user: user}))
         setNewMessage("");
+        setErrorMessage(null);
     }
 
 
@@ -49,7 +54,7 @@ function ChatWindow(props) {
 
     return <>
         <div style={{width:"100%", flexWrap:"wrap"}}>
-        <ErrorMessage message={errorMessage}/>
+
             {activeChatRoomTitle && <h2>{activeChatRoomTitle}</h2>}
         <div className={"messageWindow"}>
         {messages && messages.map(e => {
@@ -65,6 +70,7 @@ function ChatWindow(props) {
                 <input placeholder={"message"} value={newMessage} onInput={e => setNewMessage(e.target.value)}/>
                 <button>Send message</button>
             </form>
+            <ErrorMessage message={errorMessage}/>
         </div>
         </div>
     </>
