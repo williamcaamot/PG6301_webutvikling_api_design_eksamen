@@ -1,36 +1,44 @@
 import { useEffect, useState } from "react";
+import ErrorMessage from "../globals/ErrorMessage.jsx";
 
 function EntraLoginButton({ applicationConfig }) {
+    const [errorMessage, setErrorMessage] = useState();
+
   const [authorizationUrl, setAuthorizationUrl] = useState();
 
   async function loadAuthorizationUrl() {
-    const { openid_configuration_entraid, client_id_entraid } =
-      applicationConfig;
-    const { authorization_endpoint } = await fetchJSON(
-      openid_configuration_entraid,
-    );
-    const redirect_url = window.location.origin + "/login/callback/entraid";
+      try{
+          const { openid_configuration_entraid, client_id_entraid } =
+              applicationConfig;
+          const { authorization_endpoint } = await fetchJSON(
+              openid_configuration_entraid,
+          );
+          const redirect_url = window.location.origin + "/login/callback/entraid";
 
-    const code_verifier = randomString(50);
-    window.sessionStorage.setItem("code_verifier", code_verifier);
-    const state = randomString(50);
-    window.sessionStorage.setItem("state", state);
-    const code_challenge = await sha256(code_verifier);
+          const code_verifier = randomString(50);
+          window.sessionStorage.setItem("code_verifier", code_verifier);
+          const state = randomString(50);
+          window.sessionStorage.setItem("state", state);
+          const code_challenge = await sha256(code_verifier);
 
-    setAuthorizationUrl(
-      authorization_endpoint +
-        "?" +
-        new URLSearchParams({
-          response_mode: "fragment",
-          response_type: "code",
-          scope: "openid email profile",
-          client_id: client_id_entraid,
-          redirect_url,
-          code_challenge,
-          code_challenge_method: "S256",
-          state,
-        }),
-    );
+          setAuthorizationUrl(
+              authorization_endpoint +
+              "?" +
+              new URLSearchParams({
+                  response_mode: "fragment",
+                  response_type: "code",
+                  scope: "openid email profile",
+                  client_id: client_id_entraid,
+                  redirect_url,
+                  code_challenge,
+                  code_challenge_method: "S256",
+                  state,
+              }),
+          );
+      }catch (e) {
+          setErrorMessage(e.message);
+      }
+
   }
 
   useEffect(() => {
@@ -44,6 +52,7 @@ function EntraLoginButton({ applicationConfig }) {
           Log in with Microsoft
         </a>
       </div>
+        <ErrorMessage message={errorMessage}/>
     </>
   );
 }
