@@ -34,6 +34,8 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 - https://www.w3resource.com/mongodb/mongodb-array-update-operator-$push.php
 - https://stackoverflow.com/questions/68692385/mock-router-in-react-testing-library-and-jest
 - https://stackoverflow.com/questions/47656515/updateone-on-mongodb-not-working-in-node-js
+- https://stackoverflow.com/questions/49603939/message-async-callback-was-not-invoked-within-the-5000-ms-timeout-specified-by
+- https://react.dev/reference/react/createContext
 - MongoDB Dokumentasjon på https://www.mongodb.com ble hyppig brukt.
 - Mye inspirasjon til testing og login funksjonalitet er hentet fra GH siden til kurset (https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming)
 - Egne tidligere prosjekter i React & Express
