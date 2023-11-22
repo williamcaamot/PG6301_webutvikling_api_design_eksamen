@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render external profile page, the page other users can see should fetch profile details and dispaly them 1`] = `
+<div
+  className="pageContentWrapper"
+>
+  <div
+    className="innerWrapper"
+  >
+    <div
+      className="userProfile"
+    >
+      <img
+        alt="User Profile"
+        src="https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c"
+      />
+      <p>
+        Kallenavn: 
+        WILLIAM123wwwww
+         
+      </p>
+      <p>
+        Fult navn: 
+        William
+         
+        Coucheron-Aamot
+      </p>
+      <p>
+        E-post: 
+        williamcoucheronaamot@gmail.com
+      </p>
+      <p>
+        Om meg: 
+        dawawddawJeg er kul
+      </p>
+    </div>
+    <div
+      style={
+        {
+          "paddingTop": "20px",
+          "width": "100%",
+        }
+      }
+    >
+      <button
+        onClick={[Function]}
+      >
+        Logg ut
+      </button>
+      <a
+        href="/profile/edit"
+        onClick={[Function]}
+      >
+        <button>
+          Rediger profil
+        </button>
+      </a>
+    </div>
+    <h2>
+      Dine chat rom:
+    </h2>
+  </div>
+</div>
+`;

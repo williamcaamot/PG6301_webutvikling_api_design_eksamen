@@ -7,6 +7,23 @@ exports[`render external profile page, the page other users can see should fetch
   <div
     className="innerWrapper"
   >
+    <div
+      style={
+        {
+          "paddingBottom": "10px",
+          "paddingTop": "10px",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="errorMessage"
+      >
+        <p>
+          Failed to parse URL from /api/v1/profile/william@gmail.com
+        </p>
+      </div>
+    </div>
     <h2>
       Loading...
     </h2>

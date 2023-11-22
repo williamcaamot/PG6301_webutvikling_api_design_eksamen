@@ -31,10 +31,11 @@ function Message(props) {
                     >{props.message.nickname}:</p></div>
 
                 </Link>
+                <div style={{paddingBottom:"5px"}}>
+                    <p>{props.message.message}</p>
+                </div>
             </div>
-            <div>
-                <p>{props.message.message}</p>
-            </div>
+
 
         </div>
 

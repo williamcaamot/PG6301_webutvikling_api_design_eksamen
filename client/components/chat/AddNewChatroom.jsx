@@ -45,8 +45,8 @@ function AddNewChatroom(){
                 <h2>Add new chat room</h2>
                 <div style={{width: "100%", display: "flex"}}>
                     <form onSubmit={handleAddChatRoom}>
-                        Name of chatroom: <input placeholder={"Title"} value={chatRoomTitle} onChange={e => setChatRoomTitle(e.target.value)}/><br/>
-                        Description of chatroom: <input placeholder={"What is the chatroom about?"} value={chatRoomDescription} onChange={e => setChatRoomDescription(e.target.value)}/><br/>
+                        <p>Name of chatroom: <input placeholder={"Title"} value={chatRoomTitle} onChange={e => setChatRoomTitle(e.target.value)}/></p><br/>
+                        <p>Description of chatroom: <input placeholder={"What is the chatroom about?"} value={chatRoomDescription} onChange={e => setChatRoomDescription(e.target.value)}/></p><br/>
                         <button>Legg til chatroom</button>
                     </form>
 

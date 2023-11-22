@@ -52,11 +52,17 @@ exports[`chat message show a message 1`] = `
         </p>
       </div>
     </a>
-  </div>
-  <div>
-    <p>
-      daww
-    </p>
+    <div
+      style={
+        {
+          "paddingBottom": "5px",
+        }
+      }
+    >
+      <p>
+        daww
+      </p>
+    </div>
   </div>
 </div>
 `;

@@ -4,13 +4,12 @@ import {useMatch} from "react-router-dom";
 import Profile from "./Profile.jsx";
 
 function ExternalProfilePage() {
+    const [errorMessage, setErrorMessage] = useState();
 
     const match = useMatch("/profile/:email");
     const email = match.params.email;
 
     const [user, setUser] = useState();
-    const [errorMessage, setErrorMessage] = useState();
-
 
     async function getUser() {
         try {
@@ -26,15 +25,11 @@ function ExternalProfilePage() {
             setErrorMessage(e.message);
         }
     }
-
     useEffect(() => {
         getUser();
     }, []);
 
-
     return <>
-
-
         <div className={"pageContentWrapper"}>
             <div className={"innerWrapper"}>
                 <ErrorMessage message={errorMessage}/>
