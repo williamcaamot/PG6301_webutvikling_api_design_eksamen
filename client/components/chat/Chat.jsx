@@ -28,7 +28,7 @@ export function Chat() {
     }
   }
   useEffect(() => {
-    //Remove any exisiting listeneres and sockets before establishing a new one on active chat room change
+    //Remove any exisiting listeneres and sockets before establishing a new one, on active chat room change
     if (ws) {
       ws.onmessage = null;
       ws.close();

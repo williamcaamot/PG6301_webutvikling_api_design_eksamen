@@ -22,14 +22,17 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 - [x] De ALLER fleste feil presenteres til brukeren (alle feil jeg klarer å produsere...)
 
 ### Kjente feil:
-
+- Litt få tester, rakk ikke dette desv
 - Dersom en bruker endrer brukernavn, er det ikke satt opp relasjoner i databsen slik at brukernavnet oppdaters på meldinger som tidligere er sendt.
 - Bilder på brukere med EntraID fungerer ikke
 - Brukere kan fortsatt sende chatmeldinger dersom de logget ut fra et annet vindu
 - Hvis MongoDB atlas er TREGT kan det være problemer verifisering av å opprette nye chatroom (at samme navn ikke eksisterer fra før av)
 
 ### Ressurser brukt:
-
 - https://stackoverflow.com/questions/68692385/mock-router-in-react-testing-library-and-jest
 - MongoDB Dokumentasjon på https://www.mongodb.com ble hyppig brukt.
 - Mye inspirasjon til testing og login funksjonalitet er hentet fra GH siden til kurset (https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming)
+- Egne tidligere prosjekter i React & Express
+
+### "Kode du ikke har skrevet eller du har delt med andre.."
+- Jeg har   
