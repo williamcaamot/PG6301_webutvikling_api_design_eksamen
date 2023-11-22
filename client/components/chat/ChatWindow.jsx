@@ -10,10 +10,10 @@ import {ChatContext} from "./Chat.jsx";
 function ChatWindow(props) {
     const [errorMessage, setErrorMessage] = useState();
 
-    const {activeChatRoom} = useContext(ChatContext);
+    const {activeChatRoom ,ws, messages, setMessages} = useContext(ChatContext);
     const { user } = useContext(AppContext);
-    const [ws, setWs] = useState();
-    const [messages, setMessages] = useState([]);
+
+
     const [newMessage, setNewMessage] = useState("");
 
 
@@ -43,20 +43,6 @@ function ChatWindow(props) {
 
     useEffect(() => {
         getMessages();
-    }, [activeChatRoom]);
-
-    useEffect(() => {
-        const ws = new WebSocket(window.location.origin.replace(/^http/, "ws"));
-        setWs(ws);
-        ws.onmessage = (event) => {
-            const {chatroomid, message} = JSON.parse(event.data);
-            console.log(chatroomid);
-            console.log(activeChatRoom);
-            if (chatroomid === activeChatRoom) {
-                console.log("Updating messages from socket")
-                setMessages(prevMessages => [...prevMessages, message]);
-            }
-        }
     }, [activeChatRoom]);
 
     return <>

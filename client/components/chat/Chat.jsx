@@ -8,8 +8,11 @@ export const ChatContext = createContext();
 export function Chat() {
     const [errorMessage, setErrorMessage] = useState();
 
+    const [ws, setWs] = useState(null);
+    const [messages, setMessages] = useState([]);
     const [chatRooms, setChatRooms] = useState([]);
     const [activeChatRoom, setActiveChatRoom] = useState(null);
+
 
     async function handleFetchChatrooms() {
         try {
@@ -25,12 +28,30 @@ export function Chat() {
             setErrorMessage(e.message);
         }
     }
+    useEffect(() => { //Remove any exisiting listeneres and sockets before establishing a new one on active chat room change
+        if (ws) {
+            ws.onmessage = null;
+            ws.close();
+        }
+    }, [activeChatRoom]);
+
+    useEffect(() => {
+        //Try to establish socket here and put it in the context
+        const ws = new WebSocket(window.location.origin.replace(/^http/, "ws"));
+        setWs(ws);
+        ws.onmessage = (event) => {
+            const {chatroomid, message} = JSON.parse(event.data);
+            if (chatroomid === activeChatRoom) {
+                console.log("Updating messages from socket")
+                setMessages(prevMessages => [...prevMessages, message]);
+            }
+        }
+    }, [activeChatRoom]);
+
+
 
     async function setChatroom(id) {
         setActiveChatRoom(id);
-        //Load messages?
-        //Set messages? for chatroom
-        //Establish correct websocket?
     }
 
     useEffect(() => {
@@ -41,6 +62,9 @@ export function Chat() {
     return <ChatContext.Provider value={{
         chatRooms,
         activeChatRoom,
+        ws,
+        messages,
+        setMessages,
         setChatroom
     }}>
         <div className={"pageContentWrapper"}>
