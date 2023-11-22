@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`chat message show a message 1`] = `
+<div
+  style={
+    {
+      "alignItems": "center",
+      "display": "flex",
+      "flexWrap": "nowrap",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    style={
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flexWrap": "nowrap",
+      }
+    }
+  >
+    <a
+      href="/profile/williamcoucheronaamot@gmail.com"
+      onClick={[Function]}
+      style={
+        {
+          "display": "flex",
+        }
+      }
+    >
+      <div>
+        <img
+          src="https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c"
+          style={
+            {
+              "height": "30px",
+            }
+          }
+        />
+      </div>
+      <div>
+        <p
+          style={
+            {
+              "padding": "5px",
+            }
+          }
+        >
+          WILLIAM123
+          :
+        </p>
+      </div>
+    </a>
+  </div>
+  <div>
+    <p>
+      daww
+    </p>
+  </div>
+</div>
+`;

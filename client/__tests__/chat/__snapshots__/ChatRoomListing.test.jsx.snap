@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatRoomListing should render a chat room 1`] = `
+[
+  <div
+    style={
+      {
+        "paddingTop": "15px",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="chatRoomListing"
+      onClick={[Function]}
+    >
+      <h3 />
+      <p />
+    </div>
+  </div>,
+  ")",
+]
+`;
