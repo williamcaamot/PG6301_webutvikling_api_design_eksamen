@@ -5,7 +5,6 @@ function profileApi(db){
     const router = express.Router();
 
     router.get("/profile/:email", async (req, res) => {
-        console.log("fetching user");
         try {
             if (!req.user) {
                 res.status(401);
@@ -13,10 +12,11 @@ function profileApi(db){
                 return
             }
             const email = req.params.email;
-            if (await db.collection("users").findOne({email: email})) {
-                const data = await db.collection("users").findOne({email: email});
+
+            const user = await db.collection("users").findOne({email: email})
+            if (user) {
                 res.status(200);
-                res.json({message: "Successfully found user", data: userDetails(data)});
+                res.json({message: "Successfully found user", data: user});
             } else {
                 res.status(404);
                 res.json({message: "Could not find user"});
@@ -31,7 +31,6 @@ function profileApi(db){
     router.put("/profile/:email", async (req, res) => {
         try{
             const email = req.params.email;
-            const data = await db.collection("users").findOne({email: email});
             if (!req.user) {
                 res.status(401);
                 res.json({message:"You must be logged in to change user details!"});
@@ -44,13 +43,14 @@ function profileApi(db){
             }
             const newUser = {
                 name: req.user.name,
-                family_name: req.user.family_name || req.user.familyname,
+                family_name: req.user.family_name,
                 email: req.user.email,
                 picture: req.user.picture,
                 nickname: req.body.nickname,
                 bio: req.body.bio
             }
-            console.log(newUser);
+            console.log(email);
+            const data = await db.collection("users").findOne({email: email});
             if (data) {
                 if (data.email !== newUser.email) {
                     res.sendStatus(401);

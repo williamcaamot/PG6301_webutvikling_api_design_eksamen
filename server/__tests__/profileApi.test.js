@@ -37,12 +37,15 @@ describe("profile api when not authed", () => {
     })
 
     it("should return not logged in message with 401 status code", async() => {
-        const res = await request(app).put("/profile/coolemail@gmail.com");
+        const res = await request(app).put("/profile/coolemail@gmail.com").send({
+            email: "doesnmatter",
+            nickname: "coolio user",
+            bio: "my personal biography"
+        });
         const {message, data} = await (res.body);
         expect(res.status).toBe(401);
-        expect(message).toBe("You must be logged in to view user profiles")
+        expect(message).toBe("You must be logged in to change user details!")
     })
-
 
 
 
