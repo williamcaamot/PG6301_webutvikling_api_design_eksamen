@@ -7,7 +7,13 @@ exports[`header component display the header with user information 1`] = `
   <div
     className="headerWrapper"
   >
-    <div>
+    <div
+      style={
+        {
+          "padding": "30px",
+        }
+      }
+    >
       <h1>
         ChatMania
       </h1>
@@ -35,23 +41,15 @@ exports[`header component display the header with user information 1`] = `
         >
           Add new chat room
         </a>
+        <a
+          className="mainMenuLink"
+          href="/profile"
+          onClick={[Function]}
+        >
+          Velkommen, 
+          WILLIAM123wwwww
+        </a>
       </nav>
-    </div>
-    <div
-      style={
-        {
-          "flexDirection": "row-reverse",
-        }
-      }
-    >
-      <a
-        className="mainMenuLink"
-        href="/profile"
-        onClick={[Function]}
-      >
-        Velkommen, 
-        WILLIAM123wwwww
-      </a>
     </div>
   </div>
 </div>
@@ -64,7 +62,13 @@ exports[`header component display the header without user information 1`] = `
   <div
     className="headerWrapper"
   >
-    <div>
+    <div
+      style={
+        {
+          "padding": "30px",
+        }
+      }
+    >
       <h1>
         ChatMania
       </h1>
@@ -92,22 +96,14 @@ exports[`header component display the header without user information 1`] = `
         >
           Add new chat room
         </a>
+        <a
+          className="mainMenuLink"
+          href="/login"
+          onClick={[Function]}
+        >
+          Logg inn
+        </a>
       </nav>
-    </div>
-    <div
-      style={
-        {
-          "flexDirection": "row-reverse",
-        }
-      }
-    >
-      <a
-        className="mainMenuLink"
-        href="/login"
-        onClick={[Function]}
-      >
-        Logg inn
-      </a>
     </div>
   </div>
 </div>

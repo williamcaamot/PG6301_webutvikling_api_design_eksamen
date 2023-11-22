@@ -7,32 +7,34 @@ exports[`render personal profile page should render profile details and chat roo
   <div
     className="innerWrapper"
   >
-    <div
-      className="userProfile"
-    >
-      <img
-        alt="User Profile"
-        src="https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c"
-      />
-      <p>
-        Kallenavn: 
-        WILLIAM123wwwww
-         
-      </p>
-      <p>
-        Fult navn: 
-        William
-         
-        Coucheron-Aamot
-      </p>
-      <p>
-        E-post: 
-        williamcoucheronaamot@gmail.com
-      </p>
-      <p>
-        Om meg: 
-        dawawddawJeg er kul
-      </p>
+    <div>
+      <div
+        className="userProfile"
+      >
+        <img
+          alt="User Profile"
+          src="https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c"
+        />
+        <p>
+          Kallenavn: 
+          WILLIAM123wwwww
+           
+        </p>
+        <p>
+          Fult navn: 
+          William
+           
+          Coucheron-Aamot
+        </p>
+        <p>
+          E-post: 
+          williamcoucheronaamot@gmail.com
+        </p>
+        <p>
+          Om meg: 
+          dawawddawJeg er kul
+        </p>
+      </div>
     </div>
     <div
       style={
@@ -72,32 +74,34 @@ exports[`render personal profile page should render profile then sign out 1`] = 
   <div
     className="innerWrapper"
   >
-    <div
-      className="userProfile"
-    >
-      <img
-        alt="User Profile"
-        src="https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c"
-      />
-      <p>
-        Kallenavn: 
-        WILLIAM123wwwww
-         
-      </p>
-      <p>
-        Fult navn: 
-        William
-         
-        Coucheron-Aamot
-      </p>
-      <p>
-        E-post: 
-        williamcoucheronaamot@gmail.com
-      </p>
-      <p>
-        Om meg: 
-        dawawddawJeg er kul
-      </p>
+    <div>
+      <div
+        className="userProfile"
+      >
+        <img
+          alt="User Profile"
+          src="https://lh3.googleusercontent.com/a/ACg8ocIOgSmXkWTJqoKPe5Hk3JlkkhfUNer4sWkVo3UuIa_dzg=s96-c"
+        />
+        <p>
+          Kallenavn: 
+          WILLIAM123wwwww
+           
+        </p>
+        <p>
+          Fult navn: 
+          William
+           
+          Coucheron-Aamot
+        </p>
+        <p>
+          E-post: 
+          williamcoucheronaamot@gmail.com
+        </p>
+        <p>
+          Om meg: 
+          dawawddawJeg er kul
+        </p>
+      </div>
     </div>
     <div
       style={

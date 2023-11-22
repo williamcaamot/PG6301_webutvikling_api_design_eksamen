@@ -3,260 +3,260 @@ Colors by: https://www.realtimecolors.com/?colors=180202-fafafa-ff6d4d-e6e6e5-d1
  */
 
 * {
-    margin: 0;
-    border-collapse: collapse;
-    box-sizing: border-box;
+  margin: 0;
+  border-collapse: collapse;
+  box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: light) {
-    body {
-        --text-color: #180202;
-        --background-color: #fafafa;
-        --primary-color: #ff6d4d;
-        --secondary-color: #e6e6e5;
-        --accent-color: #d12600;
-    }
+  body {
+    --text-color: #180202;
+    --background-color: #fafafa;
+    --primary-color: #ff6d4d;
+    --secondary-color: #e6e6e5;
+    --accent-color: #d12600;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        --text-color: #fde7e7;
-        --background-color: #050505;
-        --primary-color: #b32100;
-        --secondary-color: #1a1a19;
-        --accent-color: #ff542e;
-    }
+  body {
+    --text-color: #fde7e7;
+    --background-color: #050505;
+    --primary-color: #b32100;
+    --secondary-color: #1a1a19;
+    --accent-color: #ff542e;
+  }
 }
 
 body {
-    background-color: var(--background-color);
+  background-color: var(--background-color);
 }
 
-h1, h2, h3, h4, h5, h6, p, span {
-    color: var(--text-color);
-    font-family: arial, sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  color: var(--text-color);
+  font-family: arial, sans-serif;
 }
 
 .flexWrapper {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
 .headerWrapper {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .headerWrapper div {
-    display: flex;
-    flex-basis: 100%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .headerWrapper div nav {
-    display: flex;
-    justify-content: center;
-    flex-basis:100%;
-    background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+  background-color: var(--primary-color);
 }
 
 .mainMenuLink {
-    padding: 20px;
-    color: var(--text-color);
-    background-color: var(--primary-color);
-    font-family: arial, sans-serif;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 600;
-
+  padding: 20px;
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  font-family: arial, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .mainMenuLink:hover {
-    background-color: var(--accent-color);
+  background-color: var(--accent-color);
 }
 
-
-.pageContentWrapper { /* To fill the entire content area of the page*/
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    box-sizing: border-box;
+.pageContentWrapper {
+  /* To fill the entire content area of the page*/
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
 }
 
 .innerWrapper {
-    padding: 30px;
-    width: 100%;
-    max-width: 1600px;
-    height: 100%;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: var(--secondary-color);
-    border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 1600px;
+  height: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
 }
-
 
 .entraIdLoginButton {
-    display: flex;
-    width: 200px;
-    align-items: center;
-    justify-content: center;
-    background-color: #0078D4;
-    color: white;
-    padding: 20px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-family: arial, sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    text-align: center;
-}
-
-.googleLoginButton {
-    display: flex;
-    width: 200px;
-    align-items: center;
-    justify-content: center;
-    background-color: #DB4437;
-    color: white;
-    padding: 20px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-family: arial, sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #0078d4;
+  color: white;
+  text-decoration: none;
+  font-family: arial, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
 }
 
 .entraIdLoginButton:hover {
-    background-color: #025ea4;
+  background-color: #025ea4;
+}
+.googleLoginButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #db4437;
+  color: white;
+  text-decoration: none;
+  font-family: arial, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
 }
 
 .googleLoginButton:hover {
-    background-color: #b72f23;
+  background-color: #b72f23;
 }
-
 
 .chatRooms {
-    width: 25%;
-
+  width: 25%;
 }
-
 .chatWindow {
-    display: flex;
-    width: 75%;
+  display: flex;
+  width: 75%;
 }
-.messageWindow{
-    width: 100%;
-    max-height: 500px;
-    background-color: var(--primary-color);
-    padding: 20px;
-    border-radius: 20px;
-    overflow-y: scroll;
+.messageWindow {
+  width: 100%;
+  max-height: 500px;
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 20px;
+  overflow-y: scroll;
 }
 
 .successMessage {
-    background-color: #ddffdd;
-    border-left: 6px solid #4CAF50;
-    padding: 12px;
-    border-radius: 4px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #ddffdd;
+  border-left: 6px solid #4caf50;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.successMessage p{
-    color: #155724;
+.successMessage p {
+  color: #155724;
 }
 
 .errorMessage {
-    background-color: #ffdddd;
-    border-left: 6px solid #f44336;
-    padding: 12px;
-    border-radius: 4px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.errorMessage p{
-    color: #d8000c;
+.errorMessage p {
+  color: #d8000c;
 }
 
 .chatRoomListing {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 20px;
-    background-color: var(--primary-color);
-    border-radius: 10px;
-    cursor: pointer;
-
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  cursor: pointer;
 }
 .chatRoomListing:hover {
-    background-color: var(--accent-color);
+  background-color: var(--accent-color);
 }
 
-.chatRoomListing p, h3 {
-    color: var(--text-color);
-    width: 100%;
+.chatRoomListing p,
+h3 {
+  color: var(--text-color);
+  width: 100%;
 }
 
-button{
-    background-color: var(--primary-color);
-    border: none;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-family: arial, sans-serif;
-    font-size: 1.1em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    color: var(--text-color)
+button {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-family: arial, sans-serif;
+  font-size: 1.1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  color: var(--text-color);
 }
 
-button:hover{
-    background-color: var(--accent-color);
+button:hover {
+  background-color: var(--accent-color);
 }
 
-input{
-    padding: 15px 20px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+input {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 10px;
 }
 
 /*
         STYLING FOR USER PROFILE COMPONENT
  */
-.userProfile{
-    background-color: var(--primary-color);
-    width: 800px;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:center;
-    padding:20px;
-    border-radius:10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.userProfile {
+  background-color: var(--primary-color);
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-    margin:auto;
+  margin: auto; /*Har NESTEN ikke brukt margin :D */
 }
 
-.userProfile img{
-    border-radius: 20px;
-    width: 100px;
-    height: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.userProfile img {
+  border-radius: 20px;
+  width: 100px;
+  height: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.userProfile p{
-    padding: 10px;
+.userProfile p {
+  padding: 10px;
 }
 
-Link{
-    text-decoration: none;
+Link {
+  text-decoration: none;
 }

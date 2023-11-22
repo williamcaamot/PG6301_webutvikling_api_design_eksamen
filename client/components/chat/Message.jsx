@@ -1,46 +1,47 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Message(props) {
-    return <>
+  return (
+    <>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexWrap: "nowrap",
+          alignItems: "center",
+        }}
+      >
         <div
-            style={{
-                width: "100%",
-                display: "flex",
-                flexWrap: "nowrap",
-                alignItems: "center",
-            }}
+          style={{
+            display: "flex",
+            flexWrap: "nowrap",
+            alignItems: "center",
+          }}
         >
-            <div
+          <Link
+            to={`/profile/${props.message.sender}`}
+            style={{ display: "flex" }}
+          >
+            <div>
+              <img
                 style={{
-                    display: "flex",
-                    flexWrap: "nowrap",
-                    alignItems: "center",
-                }}>
-                <Link to={`/profile/${props.message.sender}`}
-                      style={{display: "flex"}}>
-                    <div>
-                        <img
-                            style={{
-                                height: "30px"
-                            }}
-                            src={props.message.picture}/>
-                    </div>
-                    <div><p
-                        style={{padding: "5px"}}
-                    >{props.message.nickname}:</p></div>
-
-                </Link>
-                <div style={{paddingBottom:"5px"}}>
-                    <p>{props.message.message}</p>
-                </div>
+                  height: "30px",
+                }}
+                src={props.message.picture}
+              />
             </div>
-
-
+            <div>
+              <p style={{ padding: "5px" }}>{props.message.nickname}:</p>
+            </div>
+          </Link>
+          <div style={{ paddingBottom: "5px" }}>
+            <p>{props.message.message}</p>
+          </div>
         </div>
-
-
+      </div>
     </>
+  );
 }
 
 export default Message;
