@@ -7,9 +7,9 @@ function chatApi(db, sockets) {
 
     router.get("/chatroom/:id", async (req, res) => {
         try {
-            if(!req.user){
+            if (!req.user) {
                 res.status(401);
-                res.json({message:"You must be logged inn to get a chat room!"});
+                res.json({message: "You must be logged inn to get a chat room!"});
                 return;
             }
             const id = new ObjectId(req.params.id);
@@ -24,16 +24,16 @@ function chatApi(db, sockets) {
 
     router.get("/chatroom/owner/:email", async (req, res) => {
         try {
-            if(!req.user){
+            if (!req.user) {
                 res.status(401);
-                res.json({message:"You must be logged inn to list your chat rooms!"});
+                res.json({message: "You must be logged inn to list your chat rooms!"});
                 return;
             }
             const email = req.params.email;
             const data = await db.collection("chatrooms").find({owner: email}).toArray();
             console.log(data);
             res.status(200);
-            res.json({message:"Successfully found chat rooms to user", data: data});
+            res.json({message: "Successfully found chat rooms to user", data: data});
         } catch (e) {
 
             res.status(404)
@@ -79,9 +79,9 @@ function chatApi(db, sockets) {
 
     router.get("/chatroom", async (req, res) => {
         try {
-            if(!req.user){
+            if (!req.user) {
                 res.status(401);
-                res.json({message:"You must be logged in to view chatrooms!"});
+                res.json({message: "You must be logged in to view chatrooms!"});
                 return;
             }
             const data = await db.collection("chatrooms").find().toArray();
@@ -128,40 +128,42 @@ function chatApi(db, sockets) {
     })
 
 
-    router.put("/:id", async(req, res)=>{
-        try{
-            const id = await new ObjectId(req.params.id);
-            const data = await db.collection("movies").findOne({ _id: id });
-            if(!req.user){
+    router.put("/chatroom/:id", async (req, res) => {
+        try {
+            const id = new ObjectId(req.params.id);
+            const data = await db.collection("chatrooms").findOne({_id: id});
+            if (!req.user) {
                 res.sendStatus(401);
+                return;
+            }
+            if (req.body.title.length < 5 || req.body.description < 5) {
+                res.status(409);
+                res.json({message: "The title or description is not long enough (minimum 5 characters)"});
                 return;
             }
             const newChatroom = { //TODO should probably cehck lengths here
                 title: req.body.title,
                 description: req.body.title,
             }
-            if(data){
-                if(data.email !== req.user.email){
-                    res.sendStatus(401);
+            if (data) {
+                if (data.owner !== req.user.email) {
+                    res.status(401);
+                    res.json({message: "Could not find user"});
+                    return
                 }
                 let resdata = await db.collection("chatrooms").updateOne(
-                    { _id: id }, // The filter to match the document you want to update
-                    { $set: newChatroom } // The update document
+                    {_id: id}, // The filter to match the document you want to update
+                    {$set: newChatroom} // The update document
                 );
                 res.status(201);
-                res.json({message:"Updated chatroom", data: newChatroom});
-            }else{
-                res.status(401);
-                res.json("Could not find movie to update!");
+                res.json({message: "Updated chatroom successfully", data: newChatroom});
+            } else {
+                res.json({message: "Could not find chatroom to update"});
             }
-        }catch (e) {
-            res.status(401);
-            res.json({message:"A problem occured" + e.message});
+        } catch (e) {
+            res.json({message: "Something went wrong in the server, message: " + e.message});
         }
-
-
     })
-
 
     return router;
 }

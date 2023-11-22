@@ -4,6 +4,7 @@ import {Link, useMatch} from "react-router-dom";
 import ErrorMessage from "../globals/ErrorMessage.jsx";
 import ChatRoomListing from "./ChatRoomListing.jsx";
 import ChatWindow from "./ChatWindow.jsx";
+import SuccessMessage from "../globals/SuccessMessage.jsx";
 
 
 function EditChatRoom() {
@@ -41,17 +42,44 @@ function EditChatRoom() {
         loadChatRoom();
     }, []);
 
+
+    async function handleUpdateChatRoom(e){
+        e.preventDefault();
+        try{
+            let res = await fetch(`/api/v1/chatroom/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({title: chatRoomTitle, description: chatRoomDescription})
+            })
+            const {message, data} = await res.json();
+            if(res.status === 201){
+                setErrorMessage(null);
+                setSuccessMessage(message);
+            }else{
+                setSuccessMessage(null);
+                setErrorMessage(message);
+            }
+        }catch (e) {
+            setSuccessMessage(null);
+            setErrorMessage(e.message);
+        }
+    }
+
     return <>
         <div className={"pageContentWrapper"}>
             <div className={"innerWrapper"}>
-                <ErrorMessage message={errorMessage}/>
+
                 {chatRoom &&
-                    <form>
+                    <form onSubmit={handleUpdateChatRoom}>
                         <p>New title: <input value={chatRoomTitle} onChange={(e) => setChatRoomTitle(e.target.value)}/></p>
                         <p>New description: <input value={chatRoomDescription} onChange={(e) => setChatRoomDescription(e.target.value)}/></p>
                         <button>Oppdater</button><Link to={"/profile"}><button>Avbryt, gå tilabke</button></Link>
                     </form>
                 }
+                <ErrorMessage message={errorMessage}/>
+                <SuccessMessage message={successMessage}/>
             </div>
         </div>
     </>

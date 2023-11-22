@@ -10,7 +10,7 @@ function Header() {
         <div className={"flexWrapper"}>
             <div className={"headerWrapper"}>
                 <div>
-                    <h1>Banter Battle - Chat website</h1>
+                    <h1>ChatMania</h1>
                 </div>
                 <div>
                     <nav>

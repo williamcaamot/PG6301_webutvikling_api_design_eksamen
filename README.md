@@ -5,11 +5,7 @@ Link to deployment on heroku: https://eksamen-03c767ee6443.herokuapp.com/
 
 Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301eksamen-williamcaamot
 
-It's difficult to decide how to handle new messages, send to socket? Or via a POST request?
-Can be easier to handle auth with a post request to server?
 
-
-MongoDB was at times REALLY slow today, when it was really slow the checking for exisiting chatrooms didn't work.. If it's posisble to add multiples of the same chatroom, that's because of mongodb being slow..
 ## FEATURES:
 - [X] Darkmode
 - [X] Only logged in users can create new chat rooms
@@ -17,10 +13,10 @@ MongoDB was at times REALLY slow today, when it was really slow the checking for
 
 
 ## TODO
-- [ ] Add feature so users can edit their chatrooms
+- [X] Add feature so users can edit their chatrooms
 - [X] Add feature so users can edit their nickname and bio
 - [ ] Better error handling (EVERYWHERE?)
-- [ ] Make sure only logged in users can see and open chatrooms and messages
+- [X] Make sure only logged in users can see and open chatrooms and messages
 - [ ] TESTS!!!
 - [ ] Fix additional data not loading correctly
 
@@ -29,3 +25,4 @@ MongoDB was at times REALLY slow today, when it was really slow the checking for
 - Bilder på brukere med EntraID fungerer ikke
 - Brukere i databasen har noe informasjon enn det som sendes rundt i server og klient, dette er ikke nødvendigvis noe dårlig
 - Brukere kan fortsatt sende chatmeldinger dersom de er logget ut fra et annet vindu
+- Hvis MongoDB atlas er TREGT kan det være problemer med å opprette nye chatroom (verrifisering at av samme navn ikke eksisterer fra før av)
