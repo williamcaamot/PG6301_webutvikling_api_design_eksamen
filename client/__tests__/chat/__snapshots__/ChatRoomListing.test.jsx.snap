@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChatRoomListing should render a chat room 1`] = `
+exports[`ChatRoomListing should render a chatRoom listing with function to setchatroom 1`] = `
 [
   <div
     style={
@@ -14,8 +14,38 @@ exports[`ChatRoomListing should render a chat room 1`] = `
       className="chatRoomListing"
       onClick={[Function]}
     >
-      <h3 />
-      <p />
+      <h3>
+        dawdwaadw
+      </h3>
+      <p>
+        dawadwadwadw
+      </p>
+    </div>
+  </div>,
+  ")",
+]
+`;
+
+exports[`ChatRoomListing should render a chatroom listing with Link to edit chatroom listing page 1`] = `
+[
+  <div
+    style={
+      {
+        "paddingTop": "15px",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="chatRoomListing"
+      onClick={[Function]}
+    >
+      <h3>
+        dawdwaadw
+      </h3>
+      <p>
+        dawadwadwadw
+      </p>
     </div>
   </div>,
   ")",

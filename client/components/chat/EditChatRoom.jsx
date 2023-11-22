@@ -1,9 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
-import {AppContext} from "../App.jsx";
 import {Link, useMatch} from "react-router-dom";
 import ErrorMessage from "../globals/ErrorMessage.jsx";
-import ChatRoomListing from "./ChatRoomListing.jsx";
-import ChatWindow from "./ChatWindow.jsx";
 import SuccessMessage from "../globals/SuccessMessage.jsx";
 
 
@@ -88,8 +85,6 @@ function EditChatRoom() {
             setErrorMessage(e.message);
         }
     }
-
-
     return <>
         <div className={"pageContentWrapper"}>
             <div className={"innerWrapper"}>
