@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import ChatRoomListing from "./ChatRoomListing.jsx";
 import ChatWindow from "./ChatWindow.jsx";
 
-function Chat() {
 
+export const ChatContext = createContext();
 
-
-
+export function Chat() {
 
     const [chatRooms, setChatRooms] = useState([]);
 
@@ -41,7 +40,7 @@ function Chat() {
         handleFetchChatrooms();
     }, []);
 
-    return <>
+    return <ChatContext.Provider value={{chatRooms}}>
         <div className={"pageContentWrapper"}>
             <div className={"innerWrapper"}>
                 <div style={{width: "100%", display: "flex"}}>
@@ -74,7 +73,5 @@ function Chat() {
                 </div>
             </div>
         </div>
-    </>
+    </ChatContext.Provider>
 }
-
-export default Chat;

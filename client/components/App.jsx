@@ -5,7 +5,7 @@ import Header from "./Header.jsx";
 import Home from "./home/Home.jsx";
 import GoogleLoginCallback from "./login/GoogleLoginCallback.jsx";
 import EntraIdLoginCallback from "./login/EntraIdLoginCallback.jsx";
-import Chat from "./chat/Chat.jsx";
+import {Chat} from "./chat/Chat.jsx";
 import PersonalProfilePage from "./profile/PersonalProfilePage.jsx";
 import AddNewChatroom from "./chat/AddNewChatroom.jsx";
 import Profile from "./profile/Profile.jsx";
