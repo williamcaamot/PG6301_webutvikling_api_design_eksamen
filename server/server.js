@@ -63,17 +63,19 @@ server.on("upgrade", (req, socket, head) => {
                     picture: user.picture,
                     time: new Date(),
                 }
-                for (const s of sockets) {
-                    s.send(JSON.stringify({
-                        message: newMessage,
-                        chatroomid: chatroomid
-                    }))
+                if(message.length !== 0){ //not sennding empty messages
+                    for (const s of sockets) {
+                        s.send(JSON.stringify({
+                            message: newMessage,
+                            chatroomid: chatroomid
+                        }))
+                    }
+                    const id = new ObjectId(chatroomid);
+                    let resdata = await db.collection("chatrooms").updateOne(
+                        {_id: id},
+                        {$push: {messages: newMessage}}
+                    );
                 }
-                const id = new ObjectId(chatroomid);
-                let resdata = await db.collection("chatrooms").updateOne(
-                    {_id: id},
-                    {$push: {messages: newMessage}}
-                );
             } catch (e) {
                 socket.send(JSON.stringify({errormessage: `Something went wrong, message: ${e.message}`}))
             }
