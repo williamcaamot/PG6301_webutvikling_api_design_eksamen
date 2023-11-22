@@ -65,7 +65,7 @@ function AddNewChatroom() {
                 />
               </p>
               <br />
-              <button>Legg til chatroom</button>
+              <button onClick={handleAddChatRoom}>Legg til chatroom</button>
             </form>
           </div>
           <ErrorMessage message={errorMessage} />

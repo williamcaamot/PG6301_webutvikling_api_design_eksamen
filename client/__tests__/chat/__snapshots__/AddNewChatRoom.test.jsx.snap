@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add new chat room Should render page for adding new chat rooms 1`] = `
+<div
+  className="pageContentWrapper"
+>
+  <div
+    className="innerWrapper"
+  >
+    <h2>
+      Add new chat room
+    </h2>
+    <div
+      style={
+        {
+          "display": "flex",
+          "width": "100%",
+        }
+      }
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <p>
+          Name of chatroom:
+           
+          <input
+            onChange={[Function]}
+            placeholder="Title"
+            value=""
+          />
+        </p>
+        <br />
+        <p>
+          Description of chatroom:
+           
+          <input
+            onChange={[Function]}
+            placeholder="What is the chatroom about?"
+            value=""
+          />
+        </p>
+        <br />
+        <button
+          onClick={[Function]}
+        >
+          Legg til chatroom
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Add new chat room Should render page for adding new chat rooms 2`] = `
+<div
+  className="pageContentWrapper"
+>
+  <div
+    className="innerWrapper"
+  >
+    <h2>
+      Add new chat room
+    </h2>
+    <div
+      style={
+        {
+          "display": "flex",
+          "width": "100%",
+        }
+      }
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <p>
+          Name of chatroom:
+           
+          <input
+            onChange={[Function]}
+            placeholder="Title"
+            value=""
+          />
+        </p>
+        <br />
+        <p>
+          Description of chatroom:
+           
+          <input
+            onChange={[Function]}
+            placeholder="What is the chatroom about?"
+            value=""
+          />
+        </p>
+        <br />
+        <button
+          onClick={[Function]}
+        >
+          Legg til chatroom
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;

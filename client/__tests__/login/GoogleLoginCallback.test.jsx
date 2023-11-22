@@ -1,4 +1,4 @@
-import renderer, { act } from "react-test-renderer";
+import renderer from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
 import { AppContext } from "../../components/App.jsx";
 import GoogleLoginCallback from "../../components/login/GoogleLoginCallback.jsx";

@@ -1,5 +1,4 @@
 import fetchJSON from "./fetchJSON.js";
-import { Timestamp } from "mongodb";
 
 export async function fetchUserInfo(openid_configuration, access_token, db) {
   try {
