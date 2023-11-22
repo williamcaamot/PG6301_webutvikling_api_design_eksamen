@@ -60,7 +60,7 @@ server.on("upgrade", (req, socket, head) => {
 
                 const newMessage = {
                     message: message,
-                    sender: user.email, //TODO NEED ERROR HANDLING HERE, IF NOT ALL DETAILS NOW THE APP WILL CRASH
+                    sender: user.email,
                     nickname: user.nickname,
                     picture: user.picture,
                     time: new Date(),

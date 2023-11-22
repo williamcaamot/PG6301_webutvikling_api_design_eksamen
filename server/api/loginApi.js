@@ -4,9 +4,6 @@ import {fetchUserInfo} from "./userInfoMiddleware.js";
 function loginAPI(db) {
     const userRouter = express.Router();
 
-
-    //TODO SHOULD ACCESS TOKEN COOKIE BE SIGNED?
-
     const openid_configuration = process.env.GOOGLE_OPENID_CONFIGURATION;
     const client_id = process.env.GOOGLE_CLIENT_ID;
 
