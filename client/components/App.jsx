@@ -17,6 +17,7 @@ import EditProfilePage from "./profile/EditProfilePage.jsx";
 export const AppContext = createContext();
 
 export function App() {
+    const [errorMessage, setErrorMessage] = useState();
 
     const [user, setUser] = useState(null);
 

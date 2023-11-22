@@ -56,7 +56,7 @@ server.on("upgrade", (req, socket, head) => {
             const {chatroomid, message, user} = JSON.parse(msg);
             const newMessage = {
                 message: message,
-                sender: user.email,
+                sender: user.email, //TODO NEED ERROR HANDLING HERE, IF NOT ALL DETAILS NOW THE APP WILL CRASH
                 nickname: user.nickname,
                 picture: user.picture,
                 time: new Date(),
@@ -67,6 +67,7 @@ server.on("upgrade", (req, socket, head) => {
                     chatroomid: chatroomid
                 }))
             }
+            console.log(chatroomid);
             const id = new ObjectId(chatroomid);
             let resdata = await db.collection("chatrooms").updateOne(
                 {_id: id},

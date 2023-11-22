@@ -3,27 +3,29 @@ import ErrorMessage from "../globals/ErrorMessage.jsx";
 import {useFetcher} from "react-router-dom";
 import Message from "./Message.jsx";
 import {AppContext} from "../App.jsx";
+import {ChatContext} from "./Chat.jsx";
 
 
 
 function ChatWindow(props) {
+    const [errorMessage, setErrorMessage] = useState();
+
+    const {activeChatRoom} = useContext(ChatContext);
     const { user } = useContext(AppContext);
     const [ws, setWs] = useState();
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
-    const [errorMessage, setErrorMessage] = useState();
 
 
 
     async function getMessages() {
         try {
-            const res = await fetch(`/api/v1/chatroom/${props.acticeChatRoom}`);
+            const res = await fetch(`/api/v1/chatroom/${activeChatRoom}`);
             const {message, data} = await res.json();
             if(res.status !== 200){
                 setErrorMessage(message);
                 return;
             }
-            console.log(data.messages)
             setMessages(data.messages)
             setErrorMessage(null);
 
@@ -34,27 +36,28 @@ function ChatWindow(props) {
 
     async function handleSendMessage(e) {
         e.preventDefault();
-        ws.send(JSON.stringify({chatroomid: props.acticeChatRoom, message:newMessage, user: user}))
+        ws.send(JSON.stringify({chatroomid: activeChatRoom, message:newMessage, user: user}))
         setNewMessage("");
     }
 
 
     useEffect(() => {
         getMessages();
-    }, [props.acticeChatRoom]);
+    }, [activeChatRoom]);
 
     useEffect(() => {
         const ws = new WebSocket(window.location.origin.replace(/^http/, "ws"));
         setWs(ws);
         ws.onmessage = (event) => {
-            const {chatroomid, message, user} = JSON.parse(event.data);
+            const {chatroomid, message} = JSON.parse(event.data);
             console.log(chatroomid);
-            console.log(message);
-            if (chatroomid === props.acticeChatRoom) {
+            console.log(activeChatRoom);
+            if (chatroomid === activeChatRoom) {
+                console.log("Updating messages from socket")
                 setMessages(prevMessages => [...prevMessages, message]);
             }
         }
-    }, []);
+    }, [activeChatRoom]);
 
     return <>
         <div style={{width:"100%", flexWrap:"wrap"}}>
@@ -63,7 +66,7 @@ function ChatWindow(props) {
         {messages && messages.map(e => {
             return (
                 <Message message={e}
-                key={e.index}/>
+                key={e.time}/> /*TODO Should proabably have ID on the messages.. Will fix if enough time*/
             )
         })
         }

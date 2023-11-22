@@ -1,13 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
+import {ChatContext} from "./Chat.jsx";
 
 
-function ChatRoomListing(props) {
+function ChatRoomListing({chatRoom}) {
+
+    const {setChatroom} = useContext(ChatContext);
+
     return <>
         <div style={{paddingTop: "15px", width:"100%"}}>
             <div className={"chatRoomListing"}
-                onClick={(e) => props.onSelectChatRoom(props.id)}>
-                <h3>{props.title}</h3>
-                <p>{props.description}</p>
+                onClick={(e) => setChatroom(chatRoom._id)}>
+                <h3>{chatRoom.title}</h3>
+                <p>{chatRoom.description}</p>
             </div>
         </div>
     </>
