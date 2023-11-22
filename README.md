@@ -18,7 +18,7 @@ MongoDB was at times REALLY slow today, when it was really slow the checking for
 
 ## TODO
 - [ ] Add feature so users can edit their chatrooms
-- [ ] Add feature so users can edit their nickname and bio
+- [X] Add feature so users can edit their nickname and bio
 - [ ] Better error handling (EVERYWHERE?)
 - [ ] Make sure only logged in users can see and open chatrooms and messages
 - [ ] TESTS!!!

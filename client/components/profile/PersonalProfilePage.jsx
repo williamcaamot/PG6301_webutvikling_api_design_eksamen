@@ -4,9 +4,13 @@ import Profile from "./Profile.jsx";
 import {Link, useNavigate} from "react-router-dom";
 
 function PersonalProfilePage() {
+    const [errorMessage, setErrorMessage] = useState();
+    const [successMessage, setSuccessMessage] = useState();
+
     const navigate = useNavigate();
     const {user, setUser} = useContext(AppContext);
-    const [errorMessage, setErrorMessage] = useState();
+
+    const [chatRooms, setChatRooms] = useState();
 
     async function handleLogout() {
         try {
@@ -20,6 +24,11 @@ function PersonalProfilePage() {
         }
     }
 
+    async function loadChatRooms(){
+
+    }
+
+
     return <>
         <div className={"pageContentWrapper"}>
             <div className={"innerWrapper"}>
@@ -28,8 +37,9 @@ function PersonalProfilePage() {
                 <div style={{width: "100%", paddingTop:"20px"}}>
                     <button onClick={handleLogout}>Logg ut</button>
                     <Link to={"/profile/edit"}><button>Rediger profil</button></Link>
-                    <button>Se mine chat-rom</button>
+
                 </div>
+                <h2>Dine chat rom:</h2>
             </div>
 
         </div>

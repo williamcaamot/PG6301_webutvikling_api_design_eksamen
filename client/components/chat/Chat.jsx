@@ -65,6 +65,8 @@ export function Chat() {
         handleFetchChatrooms();
     }, []);
 
+    
+
 
     return <ChatContext.Provider value={{
         chatRooms,
@@ -85,10 +87,10 @@ export function Chat() {
                         </div>
                         <div style={{width: "100%"}}>
                             {chatRooms && chatRooms.map(e => {
-                                return (<ChatRoomListing
+                                return <ChatRoomListing
                                     chatRoom={e}
                                     key={e._id}
-                                />)
+                                />
                             })}
                         </div>
                     </div>

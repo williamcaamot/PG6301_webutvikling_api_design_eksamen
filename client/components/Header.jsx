@@ -22,7 +22,7 @@ function Header() {
                 </div>
                 <div style={{flexDirection:"row-reverse"}}>
                     {user ?
-                        <Link to="/profile" className={"mainMenuLink"}>Velkommen, {user.name}</Link>
+                        <Link to="/profile" className={"mainMenuLink"}>Velkommen, {user.nickname}</Link>
                         :
                         <Link to="/login" className={"mainMenuLink"}>Logg inn</Link>
                     }

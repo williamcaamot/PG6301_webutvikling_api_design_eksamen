@@ -10,7 +10,7 @@ import {ChatContext} from "./Chat.jsx";
 function ChatWindow(props) {
     const [errorMessage, setErrorMessage] = useState();
 
-    const {activeChatRoom ,ws, messages, setMessages, activeChatRoomTitle} = useContext(ChatContext);
+    const {setChatroom, activeChatRoom ,ws, messages, setMessages, activeChatRoomTitle} = useContext(ChatContext);
     const { user } = useContext(AppContext);
 
 
@@ -23,6 +23,7 @@ function ChatWindow(props) {
             const res = await fetch(`/api/v1/chatroom/${activeChatRoom}`);
             const {message, data} = await res.json();
             if(res.status !== 200){
+                setMessages([]);
                 setErrorMessage(message);
                 return;
             }
@@ -30,7 +31,8 @@ function ChatWindow(props) {
             setErrorMessage(null);
 
         } catch (e) {
-            setErrorMessage(e.message)
+            setErrorMessage(e.message);
+
         }
     }
 
