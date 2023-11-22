@@ -13,9 +13,6 @@ function GoogleLoginCallback() {
         const callbackParameters = Object.fromEntries(
             new URLSearchParams(window.location.hash.substring(1)),
         );
-
-
-
         const {access_token} = callbackParameters;
         const res = await fetch("/api/v1/login/google", {
             method: "POST",
