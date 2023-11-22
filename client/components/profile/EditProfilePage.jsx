@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../App.jsx";
 import Profile from "./Profile.jsx";
 import SuccessMessage from "../globals/SuccessMessage.jsx";
@@ -17,6 +17,13 @@ function EditProfilePage() {
 
     const navigate = useNavigate();
 
+
+    useEffect(() => {
+        if (user) {
+            setNickname(user.nickname);
+            setBio(user.bio);
+        }
+    }, [user]);
 
 
     async function handleUpdateUser(event) {
@@ -55,7 +62,10 @@ function EditProfilePage() {
                 <form onSubmit={handleUpdateUser}>
                     <p>Nickname: <input value={nickname} onInput={event => setNickname(event.target.value)}/></p>
                     <p>Bio: <input value={bio} onInput={event => setBio(event.target.value)}/></p>
-                    <button>Oppdater</button><Link to={"/profile"}><button>Avbryt, gå tilabke</button></Link>
+                    <button>Oppdater</button>
+                    <Link to={"/profile"}>
+                        <button>Avbryt, gå tilabke</button>
+                    </Link>
                 </form>
 
                 <SuccessMessage message={successMessage}/>
