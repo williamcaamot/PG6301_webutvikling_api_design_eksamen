@@ -143,7 +143,7 @@ function chatApi(db, sockets) {
             }
             const newChatroom = { //TODO should probably cehck lengths here
                 title: req.body.title,
-                description: req.body.title,
+                description: req.body.description,
             }
             if (data) {
                 if (data.owner !== req.user.email) {
