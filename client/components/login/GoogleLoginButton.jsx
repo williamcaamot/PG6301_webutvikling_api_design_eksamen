@@ -2,27 +2,27 @@ import { useEffect, useState } from "react";
 import ErrorMessage from "../globals/ErrorMessage.jsx";
 
 function GoogleLoginButton({ applicationConfig }) {
-    const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState();
   const [authorizationUrl, setAuthorizationUrl] = useState();
 
   async function loadAuthorizationUrl() {
-      try{
-          const { openid_configuration, client_id } = applicationConfig;
-          const { authorization_endpoint } = await fetchJSON(openid_configuration);
-          const redirect_uri = window.location.origin + "/login/callback/google";
-          setAuthorizationUrl(
-              authorization_endpoint +
-              "?" +
-              new URLSearchParams({
-                  response_type: "token",
-                  scope: "email profile",
-                  client_id,
-                  redirect_uri,
-              }),
-          );
-      }catch (e) {
-          setErrorMessage(e.message);
-      }
+    try {
+      const { openid_configuration, client_id } = applicationConfig;
+      const { authorization_endpoint } = await fetchJSON(openid_configuration);
+      const redirect_uri = window.location.origin + "/login/callback/google";
+      setAuthorizationUrl(
+        authorization_endpoint +
+          "?" +
+          new URLSearchParams({
+            response_type: "token",
+            scope: "email profile",
+            client_id,
+            redirect_uri,
+          }),
+      );
+    } catch (e) {
+      setErrorMessage(e.message);
+    }
   }
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function GoogleLoginButton({ applicationConfig }) {
           Log in with Google
         </a>
       </div>
-        <ErrorMessage message={errorMessage}/>
+      <ErrorMessage message={errorMessage} />
     </>
   );
 }
