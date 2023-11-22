@@ -27,3 +27,4 @@ MongoDB was at times REALLY slow today, when it was really slow the checking for
 ### Kjente feil:
 - Dersom en bruker endrer brukernavn, er det ikke satt opp relasjoner i databsen slik at brukernavnet oppdaters på meldinger som tidligere er sendt.
 - Bilder på brukere med EntraID fungerer ikke
+- Brukere i databasen har noe informasjon enn det som sendes rundt i server og klient, dette er ikke nødvendigvis noe dårlig

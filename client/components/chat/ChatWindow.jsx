@@ -10,7 +10,7 @@ import {ChatContext} from "./Chat.jsx";
 function ChatWindow(props) {
     const [errorMessage, setErrorMessage] = useState();
 
-    const {activeChatRoom ,ws, messages, setMessages} = useContext(ChatContext);
+    const {activeChatRoom ,ws, messages, setMessages, activeChatRoomTitle} = useContext(ChatContext);
     const { user } = useContext(AppContext);
 
 
@@ -48,7 +48,8 @@ function ChatWindow(props) {
     return <>
         <div style={{width:"100%", flexWrap:"wrap"}}>
         <ErrorMessage message={errorMessage}/>
-        <div style={{width:"100%"}}>
+            {activeChatRoomTitle && <h2>{activeChatRoomTitle}</h2>}
+        <div className={"messageWindow"}>
         {messages && messages.map(e => {
             return (
                 <Message message={e}

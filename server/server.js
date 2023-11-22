@@ -53,26 +53,30 @@ server.on("upgrade", (req, socket, head) => {
     webSocketServer.handleUpgrade(req, socket, head, (socket) => {
         sockets.push(socket);
         socket.on("message", async (msg) => {
-            const {chatroomid, message, user} = JSON.parse(msg);
-            const newMessage = {
-                message: message,
-                sender: user.email, //TODO NEED ERROR HANDLING HERE, IF NOT ALL DETAILS NOW THE APP WILL CRASH
-                nickname: user.nickname,
-                picture: user.picture,
-                time: new Date(),
+            try {
+                const {chatroomid, message, user} = JSON.parse(msg);
+
+                const newMessage = {
+                    message: message,
+                    sender: user.email, //TODO NEED ERROR HANDLING HERE, IF NOT ALL DETAILS NOW THE APP WILL CRASH
+                    nickname: user.nickname,
+                    picture: user.picture,
+                    time: new Date(),
+                }
+                for (const s of sockets) {
+                    s.send(JSON.stringify({
+                        message: newMessage,
+                        chatroomid: chatroomid
+                    }))
+                }
+                const id = new ObjectId(chatroomid);
+                let resdata = await db.collection("chatrooms").updateOne(
+                    {_id: id},
+                    {$push: {messages: newMessage}}
+                );
+            } catch (e) {
+                socket.send(JSON.stringify({errormessage: `Something went wrong, message: ${e.message}`}))
             }
-            for (const s of sockets) {
-                s.send(JSON.stringify({
-                    message: newMessage,
-                    chatroomid: chatroomid
-                }))
-            }
-            console.log(chatroomid);
-            const id = new ObjectId(chatroomid);
-            let resdata = await db.collection("chatrooms").updateOne(
-                {_id: id},
-                {$push: {messages: newMessage}}
-            );
         })
     })
 })

@@ -3,16 +3,21 @@ import {AppContext} from "../App.jsx";
 import Profile from "./Profile.jsx";
 import SuccessMessage from "../globals/SuccessMessage.jsx";
 import ErrorMessage from "../globals/ErrorMessage.jsx";
+import {Link, useNavigate} from "react-router-dom";
+import {setTimeout} from "stream-http/lib/request.js";
 
 function EditProfilePage() {
+    const [successMessage, setSuccessMessage] = useState();
+    const [errorMessage, setErrorMessage] = useState();
 
     const {user, setUser} = useContext(AppContext);
 
     const [nickname, setNickname] = useState();
     const [bio, setBio] = useState();
 
-    const [errorMessage, setErrorMessage] = useState();
-    const [successMessage, setSuccessMessage] = useState();
+    const navigate = useNavigate();
+
+
 
     async function handleUpdateUser(event) {
         event.preventDefault();
@@ -25,11 +30,15 @@ function EditProfilePage() {
             },
             body: JSON.stringify(newUserDetails)
         })
-        const responseMessage = await res.json();
+        const {message, data} = await res.json();
         if (res.status === 201) {
-            setSuccessMessage(responseMessage);
+            console.log(data);
+            setUser(data);
+            setSuccessMessage(message);
+            setErrorMessage(null);
+            navigate("/profile")
         } else {
-            setErrorMessage(responseMessage);
+            setErrorMessage(message);
         }
     }
 
@@ -44,9 +53,9 @@ function EditProfilePage() {
         <div className={"pageContentWrapper"}>
             <div className={"innerWrapper"}>
                 <form onSubmit={handleUpdateUser}>
-                    <p>Nickname: <input value={nickname}/></p>
+                    <p>Nickname: <input value={nickname} onInput={event => setNickname(event.target.value)}/></p>
                     <p>Bio: <input value={bio} onInput={event => setBio(event.target.value)}/></p>
-                    <button>Endre detaljer</button>
+                    <button>Endre detaljer</button><Link to={"/profile"}><button>Avbryt, gå tilabke</button></Link>
                 </form>
 
                 <SuccessMessage message={successMessage}/>

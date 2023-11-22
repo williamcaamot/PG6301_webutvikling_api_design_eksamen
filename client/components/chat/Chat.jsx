@@ -1,6 +1,7 @@
 import React, {createContext, useEffect, useState} from "react";
 import ChatRoomListing from "./ChatRoomListing.jsx";
 import ChatWindow from "./ChatWindow.jsx";
+import ErrorMessage from "../globals/ErrorMessage.jsx";
 
 
 export const ChatContext = createContext();
@@ -12,6 +13,7 @@ export function Chat() {
     const [messages, setMessages] = useState([]);
     const [chatRooms, setChatRooms] = useState([]);
     const [activeChatRoom, setActiveChatRoom] = useState(null);
+    const [activeChatRoomTitle, setActiveChatRoomTitle] = useState()
 
 
     async function handleFetchChatrooms() {
@@ -40,7 +42,11 @@ export function Chat() {
         const ws = new WebSocket(window.location.origin.replace(/^http/, "ws"));
         setWs(ws);
         ws.onmessage = (event) => {
-            const {chatroomid, message} = JSON.parse(event.data);
+            const {chatroomid, message, errormessage} = JSON.parse(event.data);
+            if(errormessage){
+                setErrorMessage(errormessage);
+                return;
+            }
             if (chatroomid === activeChatRoom) {
                 console.log("Updating messages from socket")
                 setMessages(prevMessages => [...prevMessages, message]);
@@ -50,8 +56,9 @@ export function Chat() {
 
 
 
-    async function setChatroom(id) {
+    async function setChatroom(id, title) {
         setActiveChatRoom(id);
+        setActiveChatRoomTitle(title);
     }
 
     useEffect(() => {
@@ -65,10 +72,12 @@ export function Chat() {
         ws,
         messages,
         setMessages,
+        activeChatRoomTitle,
         setChatroom
     }}>
         <div className={"pageContentWrapper"}>
             <div className={"innerWrapper"}>
+                <ErrorMessage message={errorMessage}/>
                 <div style={{width: "100%", display: "flex"}}>
                     <div className={"chatRooms"}>
                         <div style={{width: "100%", display: "flex", flexWrap: "nowrap"}}>
@@ -86,9 +95,8 @@ export function Chat() {
 
 
                     <div className={"chatWindow"} style={{padding: "15px"}}>
-                        {activeChatRoom && <ChatWindow
-                            acticeChatRoom={activeChatRoom}
-                        />}
+
+                        {activeChatRoom && <ChatWindow/>}
                     </div>
 
 
