@@ -2,7 +2,7 @@ import fetchJSON from "./fetchJSON.js";
 import { Timestamp } from "mongodb";
 
 export async function fetchUserInfo(openid_configuration, access_token, db) {
-  try{
+  try {
     const { userinfo_endpoint } = await fetchJSON(openid_configuration);
     const res = await fetch(userinfo_endpoint, {
       headers: {
@@ -15,8 +15,8 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
         try {
           //TODO this needs some rework if it's supposed to work if someone changes their openid account details...
           const userFromDb = await db
-              .collection("users")
-              .findOne({ email: data.email });
+            .collection("users")
+            .findOne({ email: data.email });
           data.nickname = userFromDb.nickname;
           data.bio = userFromDb.bio;
         } catch (e) {
@@ -25,7 +25,7 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
       } else {
         try {
           data.bio =
-              "Som alle andre på denne siden, er jeg en STOR fan av online chat-rom!";
+            "Som alle andre på denne siden, er jeg en STOR fan av online chat-rom!";
           data.nickname = data.given_name || data.givenname;
           await db.collection("users").insertOne(data);
         } catch (e) {
@@ -37,10 +37,9 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
     } else if (res.status !== 401) {
       throw new Error("Failed to fetch userinfo " + res.statusCode);
     }
-  }catch (e) {
+  } catch (e) {
     console.log(e.message);
   }
-
 }
 
 export function userinfoMiddleware(db) {

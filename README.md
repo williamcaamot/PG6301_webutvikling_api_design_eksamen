@@ -30,6 +30,7 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 - Hvis MongoDB atlas er TREGT kan det være problemer verifisering av å opprette nye chatroom (at samme navn ikke eksisterer fra før av)
 
 ### Ressurser/kilder brukt:
+
 - https://www.w3resource.com/mongodb/mongodb-array-update-operator-$push.php
 - https://stackoverflow.com/questions/68692385/mock-router-in-react-testing-library-and-jest
 - https://stackoverflow.com/questions/47656515/updateone-on-mongodb-not-working-in-node-js
@@ -39,4 +40,4 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 
 ### "Kode du ikke har skrevet eller du har delt med andre.."
 
-- 
+-
