@@ -1,7 +1,10 @@
 import React from "react";
 
 function Profile(props) {
-    console.log(props);
+    if(!props.user){
+        return<h2>Loading...</h2>
+    }
+
     if (props.user) return (
         <div className={"userProfile"}>
             <img src={props.user.picture} alt="User Profile" />

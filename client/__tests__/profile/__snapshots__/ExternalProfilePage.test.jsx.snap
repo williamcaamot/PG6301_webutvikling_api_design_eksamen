@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render external profile page, the page other users can see should fetch profile details and dispaly them 1`] = `
+<div
+  className="pageContentWrapper"
+>
+  <div
+    className="innerWrapper"
+  >
+    <h2>
+      Loading...
+    </h2>
+  </div>
+</div>
+`;

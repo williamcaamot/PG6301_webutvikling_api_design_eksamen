@@ -50,7 +50,7 @@ exports[`header component display the header with user information 1`] = `
         onClick={[Function]}
       >
         Velkommen, 
-        WILLIAM123
+        WILLIAM123wwwww
       </a>
     </div>
   </div>

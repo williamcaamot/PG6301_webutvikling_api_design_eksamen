@@ -22,8 +22,6 @@ function ExternalProfilePage() {
                 return;
             }
             setUser(data);
-            console.log(data);
-
         } catch (e) {
             setErrorMessage(e.message);
         }
