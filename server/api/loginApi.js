@@ -17,8 +17,8 @@ function loginAPI(db) {
         const {access_token} = req.body;
         const user = await fetchUserInfo(openid_configuration, access_token, db);
         if (user) {
-            res.cookie("access_token", access_token, {signed: true});
-            res.cookie("login_provider", "google", {signed: true});
+            res.cookie("access_token", access_token, {signed: true, maxAge: 86400000});
+            res.cookie("login_provider", "google", {signed: true, maxAge: 86400000});
             await db
                 .collection("userLogins")
                 .insertOne({user: user, username: user.given_name, date: new Date()});
@@ -43,8 +43,8 @@ function loginAPI(db) {
         const {access_token} = req.body;
         const user = await fetchUserInfo(openid_configuration_entraid, access_token, db);
         if (user) {
-            res.cookie("access_token", access_token, {signed: true});
-            res.cookie("login_provider", "entraid", {signed: true});
+            res.cookie("access_token", access_token, {signed: true, maxAge: 86400000});
+            res.cookie("login_provider", "entraid", {signed: true, maxAge: 86400000});
             await db
                 .collection("userLogins")
                 .insertOne({user: user, username: user.givenname, date: new Date()});
