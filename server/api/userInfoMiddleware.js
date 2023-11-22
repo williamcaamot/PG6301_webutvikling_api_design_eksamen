@@ -39,7 +39,7 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
 
 export function userinfoMiddleware(db) {
     return async (req, res, next) => {
-        const {access_token, login_provider} = req.cookies;
+        const {access_token, login_provider} = req.signedCookies;
         if (access_token) {
             let user;
             if (login_provider === "google") {

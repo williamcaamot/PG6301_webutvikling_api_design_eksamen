@@ -30,6 +30,13 @@ function Chat() {
         setActiveChatRoom(id);
     }
 
+    async function setActiveChatoom(id){
+        setActiveChatRoom(id);
+        //Load messages?
+        //Set messages? for chatroom
+        //Establish correct websocket?
+    }
+
     useEffect(() => {
         handleFetchChatrooms();
     }, []);

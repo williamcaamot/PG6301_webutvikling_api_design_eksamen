@@ -17,6 +17,8 @@ function chatApi(db, sockets) {
             res.json({message: "Something went wrong in the server, message: " + e.message});
         }
     })
+
+    //TODO REMOVE THIS ONCE CERTAIN IT IS NO LONGER IN USE (REPLACED BY SOCKETS!)
     router.post("/chatroom/:id", async(req, res) => {
         console.log("Someone sending message");
         try {

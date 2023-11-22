@@ -19,20 +19,18 @@ function loginAPI(db) {
     userRouter.post("/login/google", async (req, res) => {
         const {access_token} = req.body;
         const user = await fetchUserInfo(openid_configuration, access_token, db);
-        if(user){
-            res.cookie("access_token", access_token);
-            res.cookie("login_provider","google");
+        if (user) {
+            res.cookie("access_token", access_token, {signed: true});
+            res.cookie("login_provider", "google", {signed: true});
             await db
                 .collection("userLogins")
                 .insertOne({user: user, username: user.given_name, date: new Date()});
             res.status(201);
             res.json(userDetails(user));
-        }
-        else{
+        } else {
             res.sendStatus(401);
         }
     });
-
 
 
     const openid_configuration_entraid = process.env.ENTRA_OPENID_CONFIGURATION;
@@ -47,15 +45,15 @@ function loginAPI(db) {
     userRouter.post("/login/entraid", async (req, res) => {
         const {access_token} = req.body;
         const user = await fetchUserInfo(openid_configuration_entraid, access_token, db);
-        if(user){
-            res.cookie("access_token", access_token);
-            res.cookie("login_provider","entraid");
+        if (user) {
+            res.cookie("access_token", access_token, {signed: true});
+            res.cookie("login_provider", "entraid", {signed: true});
             await db
                 .collection("userLogins")
                 .insertOne({user: user, username: user.givenname, date: new Date()});
             res.status(201);
             res.json(userDetails(user));
-        }else{
+        } else {
             res.sendStatus(401);
         }
     })
@@ -76,37 +74,34 @@ function loginAPI(db) {
     });
 
 
-    userRouter.get("/profile/:email", async (req, res)=>{
+    userRouter.get("/profile/:email", async (req, res) => {
         console.log("fetching user");
-        try{
-            if(!req.user){
+        try {
+            if (!req.user) {
                 res.status(401);
-                res.json({message:"You must be logged in to view this"});
+                res.json({message: "You must be logged in to view this"});
                 return
             }
             const email = req.params.email;
-            if(await db.collection("users").findOne({ email: email })){
-                const data = await db.collection("users").findOne({ email: email });
+            if (await db.collection("users").findOne({email: email})) {
+                const data = await db.collection("users").findOne({email: email});
                 res.status(200);
-                res.json({message:"Successfully found user", data: userDetails(data)});
-            } else{
+                res.json({message: "Successfully found user", data: userDetails(data)});
+            } else {
                 res.status(404);
-                res.json({message:"Could not find user"});
+                res.json({message: "Could not find user"});
             }
-        } catch (e){
+        } catch (e) {
             res.status(404);
             res.json("Internal server error");
         }
     })
 
 
-
-
-
-    userRouter.put("/profile/:email", async(req, res)=>{
+    userRouter.put("/profile/:email", async (req, res) => {
         const email = req.params.email;
-        const data = await db.collection("users").findOne({ email: email });
-        if(!req.user){
+        const data = await db.collection("users").findOne({email: email});
+        if (!req.user) {
             res.sendStatus(401);
             return;
         }
@@ -119,35 +114,21 @@ function loginAPI(db) {
             bio: req.params.bio
         }
         console.log(newUser);
-        if(data){
-            if(data.email !== newUser.email){
+        if (data) {
+            if (data.email !== newUser.email) {
                 res.sendStatus(401);
             }
             let resdata = await db.collection("users").updateOne(
-                { email: email }, // The filter to match the document you want to update
-                { $set: newUser } // The update document
+                {email: email}, // The filter to match the document you want to update
+                {$set: newUser} // The update document
             );
             res.status(201);
             res.json("Updated user");
-        }else{
+        } else {
             res.status(401);
             res.json("Could not find user to update!");
         }
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     return userRouter;
@@ -155,7 +136,7 @@ function loginAPI(db) {
 
 export default loginAPI;
 
-function userDetails(user){
+function userDetails(user) {
     let newUser = {
         name: user.given_name || givenname,
         family_name: user.family_name || familyname,
