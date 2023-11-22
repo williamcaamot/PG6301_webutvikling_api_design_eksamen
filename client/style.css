@@ -183,18 +183,22 @@ h1, h2, h3, h4, h5, h6, p, span {
 }
 
 .chatRoomListing {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     padding: 20px;
     background-color: var(--primary-color);
     border-radius: 10px;
     cursor: pointer;
+
 }
 .chatRoomListing:hover {
     background-color: var(--accent-color);
 }
 
 .chatRoomListing p, h3 {
-    color: var(--text-color)
+    color: var(--text-color);
+    width: 100%;
 }
 
 button{
@@ -245,4 +249,8 @@ input{
 }
 .userProfile p{
     padding: 10px;
+}
+
+Link{
+    text-decoration: none;
 }

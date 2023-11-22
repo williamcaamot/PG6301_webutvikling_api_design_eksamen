@@ -9,7 +9,7 @@ function chatApi(db, sockets) {
         try {
             if(!req.user){
                 res.status(401);
-                res.json({message:"You must be logged inn to list chat messages!"});
+                res.json({message:"You must be logged inn to get a chat room!"});
                 return;
             }
             const id = new ObjectId(req.params.id);
@@ -30,9 +30,12 @@ function chatApi(db, sockets) {
                 return;
             }
             const email = req.params.email;
-            console.log(email);
-
+            const data = await db.collection("chatrooms").find({owner: email}).toArray();
+            console.log(data);
+            res.status(200);
+            res.json({message:"Successfully found chat rooms to user", data: data});
         } catch (e) {
+
             res.status(404)
             res.json({message: "Something went wrong in the server, message: " + e.message});
         }
@@ -122,6 +125,41 @@ function chatApi(db, sockets) {
         } catch (e) {
             res.json({message: "Something went wrong in the server, message: " + e.message});
         }
+    })
+
+
+    router.put("/:id", async(req, res)=>{
+        try{
+            const id = await new ObjectId(req.params.id);
+            const data = await db.collection("movies").findOne({ _id: id });
+            if(!req.user){
+                res.sendStatus(401);
+                return;
+            }
+            const newChatroom = { //TODO should probably cehck lengths here
+                title: req.body.title,
+                description: req.body.title,
+            }
+            if(data){
+                if(data.email !== req.user.email){
+                    res.sendStatus(401);
+                }
+                let resdata = await db.collection("chatrooms").updateOne(
+                    { _id: id }, // The filter to match the document you want to update
+                    { $set: newChatroom } // The update document
+                );
+                res.status(201);
+                res.json({message:"Updated chatroom", data: newChatroom});
+            }else{
+                res.status(401);
+                res.json("Could not find movie to update!");
+            }
+        }catch (e) {
+            res.status(401);
+            res.json({message:"A problem occured" + e.message});
+        }
+
+
     })
 
 

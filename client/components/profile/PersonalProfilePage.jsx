@@ -1,7 +1,8 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {AppContext} from "../App.jsx";
 import Profile from "./Profile.jsx";
 import {Link, useNavigate} from "react-router-dom";
+import ChatRoomListing from "../chat/ChatRoomListing.jsx";
 
 function PersonalProfilePage() {
     const [errorMessage, setErrorMessage] = useState();
@@ -25,8 +26,23 @@ function PersonalProfilePage() {
     }
 
     async function loadChatRooms(){
-
+        try{
+            console.log(user.email);
+            const res = await fetch(`/api/v1/chatroom/owner/${user.email}`);
+            const {message, data} = await res.json();
+            if(res.status !== 200){
+                setErrorMessage(message);
+                return;
+            }
+            setChatRooms(data);
+            console.log(data);
+        }catch (e) {
+            setErrorMessage(e.message)
+        }
     }
+    useEffect(() => {
+        loadChatRooms();
+    }, [user]);
 
 
     return <>
@@ -40,6 +56,9 @@ function PersonalProfilePage() {
 
                 </div>
                 <h2>Dine chat rom:</h2>
+                {chatRooms && chatRooms.map((chatroom) => {
+                    return<><ChatRoomListing chatRoom={chatroom} user={user}/></>
+                })}
             </div>
 
         </div>

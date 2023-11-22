@@ -55,7 +55,7 @@ function EditProfilePage() {
                 <form onSubmit={handleUpdateUser}>
                     <p>Nickname: <input value={nickname} onInput={event => setNickname(event.target.value)}/></p>
                     <p>Bio: <input value={bio} onInput={event => setBio(event.target.value)}/></p>
-                    <button>Endre detaljer</button><Link to={"/profile"}><button>Avbryt, gå tilabke</button></Link>
+                    <button>Oppdater</button><Link to={"/profile"}><button>Avbryt, gå tilabke</button></Link>
                 </form>
 
                 <SuccessMessage message={successMessage}/>

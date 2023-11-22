@@ -16,7 +16,7 @@ function Header() {
                     <nav>
                         <Link to="/" className={"mainMenuLink"}>Hjem</Link>
                         <Link to="/chat" className={"mainMenuLink"}>Chat</Link>
-                        <Link to="/addnewchatroom" className={"mainMenuLink"}>Add new chat room</Link>
+                        <Link to="/chatroom/add" className={"mainMenuLink"}>Add new chat room</Link>
 
                     </nav>
                 </div>
