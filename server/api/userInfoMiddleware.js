@@ -60,7 +60,6 @@ export function userinfoMiddleware(db) {
 
                 } catch (e) {
                     console.log(e)
-
                 }
             }
         }

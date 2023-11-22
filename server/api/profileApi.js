@@ -62,8 +62,8 @@ function profileApi(db){
                 res.status(201);
                 res.json({message:"Successfully updated user", data: newUser});
             } else {
-                res.status(401);
-                res.json("Could not find user to update!");
+                res.status(404);
+                res.json({message:"Could not find user to update!"});
             }
         }catch (e) {
             res.json({message: "Something went wrong in the server, message: " + e.message});

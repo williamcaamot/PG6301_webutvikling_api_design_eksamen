@@ -104,12 +104,12 @@ function chatApi(db, sockets) {
 
     router.put("/chatroom/:id", async (req, res) => {
         try {
-            const id = new ObjectId(req.params.id);
-            const data = await db.collection("chatrooms").findOne({_id: id});
             if (!req.user) {
-                res.sendStatus(401);
+                res.status(401);
+                res.json({message: "You must be logged in to edit chatroom details!"})
                 return;
             }
+            const id = new ObjectId(req.params.id);
             if (req.body.title.length < 5 || req.body.description < 5) {
                 res.status(409);
                 res.json({message: "The title or description is not long enough (minimum 5 characters)"});
@@ -124,6 +124,7 @@ function chatApi(db, sockets) {
                 title: req.body.title,
                 description: req.body.description,
             }
+            const data = await db.collection("chatrooms").findOne({_id: id});
             if (data) {
                 if (data.owner !== req.user.email) {
                     res.status(401);
@@ -146,12 +147,13 @@ function chatApi(db, sockets) {
 
     router.delete("/chatroom/:id", async (req, res) => {
         try {
-            const id = new ObjectId(req.params.id);
-            const data = await db.collection("chatrooms").findOne({_id: id});
             if (!req.user) {
-                res.sendStatus(401);
+                res.status(401);
+                res.json({message:"You must be logged in to delete a chat room"});
                 return;
             }
+            const id = new ObjectId(req.params.id);
+            const data = await db.collection("chatrooms").findOne({_id: id});
             if (data) {
                 if (data.owner !== req.user.email) {
                     res.status(401);

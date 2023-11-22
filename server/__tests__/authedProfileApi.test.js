@@ -78,8 +78,7 @@ describe("profile api when not authed", () => {
     })
 
 
-
-    it("should return not logged in message with 401 status code", async() => {
+    it("Should return successfully updated user", async() => {
         const res = await request(app).put("/profile/test@user.com").send({
             email: "doesnmatter",
             nickname: "coolio user",
@@ -90,6 +89,17 @@ describe("profile api when not authed", () => {
         expect(message).toBe("Successfully updated user")
     })
 
+
+    it("Should return user not found", async() => {
+        const res = await request(app).put("/profile/bladswdaw@dawddwad.com").send({
+            email: "doesnmatter",
+            nickname: "coolio user",
+            bio: "my personal biography"
+        });
+        const {message, data} = await (res.body);
+        expect(res.status).toBe(404);
+        expect(message).toBe("Could not find user to update!")
+    })
 
 
 

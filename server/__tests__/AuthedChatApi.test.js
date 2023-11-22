@@ -23,22 +23,39 @@ const app = express();
 app.use(express.json());
 let client;
 jest.setTimeout(30000);
+let db;
 
 beforeAll(async () => {
     dotenv.config();
     client = new MongoClient(process.env.MONGODB_URI);
     await client.connect();
-    let db = await client.db("test-exam-database");
+    db = await client.db("test-exam-database");
     await app.use(addFakeUserMiddleware(db));
     await app.use("", chatApi(db));
+
+
+    const chatRoom1 = {
+        "owner": "test@user.com",
+        "title": "Chatroom Title",
+        "description": "Cool chat room!",
+    }
+
+    await db.collection("chatrooms").insertOne(chatRoom1)
 })
 
 afterAll(async () => {
+    await db.collection("chatrooms").deleteMany({});
     await client.close();  // Close the MongoDB connection
 });
 
 
 describe("chat api", () => {
+
+    it("Should try get chatroom with invalid id and return error", async () => {
+        const res = await request(app).get("/chatroom/dawwda");
+        expect(res.status).toBe(404);
+    })
+
 
     it("Should return list of chat rooms", async () => {
         const res = await request(app).get("/chatroom");
@@ -46,10 +63,18 @@ describe("chat api", () => {
         expect(res.body.message).toBe("Success");
     })
 
+    it("Should return list of chat rooms and then get the first one by id", async () => {
+        const res = await request(app).get("/chatroom");
+        expect(res.status).toBe(200);
+        expect(res.body.message).toBe("Success");
+        //TODO finish this test
+    })
+
+
 
     it("Should add a new chat room and return 201", async () => {
         //Arrange
-        const title = "Chatroom Title";
+        const title = "New Chatroom Title";
         const description = "Best chatroom ever!"
 
         //Act
@@ -62,9 +87,6 @@ describe("chat api", () => {
         expect(res.status).toBe(201);
         expect(res.body.data.length).toBe(24);
 
-
-        //Cleanup
-        await request(app).delete(`/chatroom/${res.body.data}`);
     })
 
     it("should not create a new chatroom because length too short", async () => {
@@ -80,27 +102,6 @@ describe("chat api", () => {
         expect(res.status).toBe(409);
         expect(res.body.message).toBe("The title or description is not long enough (minimum 5 characters)");
 
-    })
-
-
-    it("Return chat room created", async () => {
-        //Arrange
-        const email = "test@user.com";
-        const title = "Cool Chatroom";
-        const description = "Best chatroom";
-
-        //Act
-        const res = await request(app).post("/chatroom").send({
-            title: title, description: description
-        })
-        const res2 = await request(app).get(`/chatroom/owner/${email}`);
-        const {message, data} = await JSON.stringify(res2);
-        console.log(message);
-        //Assert
-
-
-        //Cleanup
-        await request(app).delete(`/chatroom/${res.body.data}`);
     })
 
 
