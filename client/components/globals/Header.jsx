@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import {AppContext} from "./App.jsx";
+import {AppContext} from "../App.jsx";
 
 function Header() {
 

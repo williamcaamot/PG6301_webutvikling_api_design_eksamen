@@ -1,7 +1,7 @@
 import React, {createContext, useEffect, useState} from "react";
 import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
 import Login from "./login/Login.jsx";
-import Header from "./Header.jsx";
+import Header from "./globals/Header.jsx";
 import Home from "./home/Home.jsx";
 import GoogleLoginCallback from "./login/GoogleLoginCallback.jsx";
 import EntraIdLoginCallback from "./login/EntraIdLoginCallback.jsx";

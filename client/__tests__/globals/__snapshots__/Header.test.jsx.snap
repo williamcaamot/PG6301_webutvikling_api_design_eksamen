@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`header component display the header with user information 1`] = `
+<div
+  className="flexWrapper"
+>
+  <div
+    className="headerWrapper"
+  >
+    <div>
+      <h1>
+        ChatMania
+      </h1>
+    </div>
+    <div>
+      <nav>
+        <a
+          className="mainMenuLink"
+          href="/"
+          onClick={[Function]}
+        >
+          Hjem
+        </a>
+        <a
+          className="mainMenuLink"
+          href="/chat"
+          onClick={[Function]}
+        >
+          Chat
+        </a>
+        <a
+          className="mainMenuLink"
+          href="/chatroom/add"
+          onClick={[Function]}
+        >
+          Add new chat room
+        </a>
+      </nav>
+    </div>
+    <div
+      style={
+        {
+          "flexDirection": "row-reverse",
+        }
+      }
+    >
+      <a
+        className="mainMenuLink"
+        href="/profile"
+        onClick={[Function]}
+      >
+        Velkommen, 
+        WILLIAM123
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`header component display the header without user information 1`] = `
+<div
+  className="flexWrapper"
+>
+  <div
+    className="headerWrapper"
+  >
+    <div>
+      <h1>
+        ChatMania
+      </h1>
+    </div>
+    <div>
+      <nav>
+        <a
+          className="mainMenuLink"
+          href="/"
+          onClick={[Function]}
+        >
+          Hjem
+        </a>
+        <a
+          className="mainMenuLink"
+          href="/chat"
+          onClick={[Function]}
+        >
+          Chat
+        </a>
+        <a
+          className="mainMenuLink"
+          href="/chatroom/add"
+          onClick={[Function]}
+        >
+          Add new chat room
+        </a>
+      </nav>
+    </div>
+    <div
+      style={
+        {
+          "flexDirection": "row-reverse",
+        }
+      }
+    >
+      <a
+        className="mainMenuLink"
+        href="/login"
+        onClick={[Function]}
+      >
+        Logg inn
+      </a>
+    </div>
+  </div>
+</div>
+`;

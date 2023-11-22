@@ -18,7 +18,7 @@ function Message(props) {
                     alignItems: "center",
                 }}>
                 <Link to={`/profile/${props.message.sender}`}
-                style={{display:"flex"}}>
+                      style={{display: "flex"}}>
                     <div>
                         <img
                             style={{
