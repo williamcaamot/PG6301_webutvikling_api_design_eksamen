@@ -43,9 +43,9 @@ function EditChatRoom() {
     }, []);
 
 
-    async function handleUpdateChatRoom(e){
+    async function handleUpdateChatRoom(e) {
         e.preventDefault();
-        try{
+        try {
             let res = await fetch(`/api/v1/chatroom/${id}`, {
                 method: "PUT",
                 headers: {
@@ -54,18 +54,41 @@ function EditChatRoom() {
                 body: JSON.stringify({title: chatRoomTitle, description: chatRoomDescription})
             })
             const {message, data} = await res.json();
-            if(res.status === 201){
+            if (res.status === 201) {
                 setErrorMessage(null);
                 setSuccessMessage(message);
-            }else{
+            } else {
                 setSuccessMessage(null);
                 setErrorMessage(message);
             }
-        }catch (e) {
+        } catch (e) {
             setSuccessMessage(null);
             setErrorMessage(e.message);
         }
     }
+
+    async function handleDeleteChatRoom() {
+        try {
+            let res = await fetch(`/api/v1/chatroom/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            const {message, data} = await res.json();
+            if (res.status === 201) {
+                setErrorMessage(null);
+                setSuccessMessage(message);
+            } else {
+                setSuccessMessage(null);
+                setErrorMessage(message);
+            }
+        } catch (e) {
+            setSuccessMessage(null);
+            setErrorMessage(e.message);
+        }
+    }
+
 
     return <>
         <div className={"pageContentWrapper"}>
@@ -73,11 +96,20 @@ function EditChatRoom() {
 
                 {chatRoom &&
                     <form onSubmit={handleUpdateChatRoom}>
-                        <p>New title: <input value={chatRoomTitle} onChange={(e) => setChatRoomTitle(e.target.value)}/></p>
-                        <p>New description: <input value={chatRoomDescription} onChange={(e) => setChatRoomDescription(e.target.value)}/></p>
-                        <button>Oppdater</button><Link to={"/profile"}><button>Avbryt, gå tilabke</button></Link>
+                        <p>New title: <input value={chatRoomTitle} onChange={(e) => setChatRoomTitle(e.target.value)}/>
+                        </p>
+                        <p>New description: <input value={chatRoomDescription}
+                                                   onChange={(e) => setChatRoomDescription(e.target.value)}/></p>
+                        <div style={{width:"100%", paddingTop:"20px"}}><button>Oppdater</button>
+                        <Link to={"/profile"}>
+                            <button>Avbryt, gå tilabke</button>
+                        </Link>
+                        </div>
                     </form>
                 }
+                <div style={{width:"100%", paddingTop:"20px"}}>
+                    <button onClick={handleDeleteChatRoom}>Slett chatroom</button>
+                </div>
                 <ErrorMessage message={errorMessage}/>
                 <SuccessMessage message={successMessage}/>
             </div>

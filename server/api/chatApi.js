@@ -106,6 +106,11 @@ function chatApi(db, sockets) {
                 res.json({message: "The title or description is not long enough (minimum 5 characters)"});
                 return;
             }
+            if (req.body.title.length > 50 || req.body.description > 200) {
+                res.status(409);
+                res.json({message: "Too long name or description!"});
+                return;
+            }
             if (await db.collection("chatrooms").findOne({title: req.body.title})) {
                 console.log("Found exisiting chatroom");
                 res.status(409);
@@ -141,7 +146,12 @@ function chatApi(db, sockets) {
                 res.json({message: "The title or description is not long enough (minimum 5 characters)"});
                 return;
             }
-            const newChatroom = { //TODO should probably cehck lengths here
+            if (req.body.title.length > 50 || req.body.description > 200) {
+                res.status(409);
+                res.json({message: "Too long name or description!"});
+                return;
+            }
+            const newChatroom = {
                 title: req.body.title,
                 description: req.body.description,
             }
@@ -164,6 +174,34 @@ function chatApi(db, sockets) {
             res.json({message: "Something went wrong in the server, message: " + e.message});
         }
     })
+
+    router.delete("/chatroom/:id", async (req, res) => {
+        try {
+            const id = new ObjectId(req.params.id);
+            const data = await db.collection("chatrooms").findOne({_id: id});
+            if (!req.user) {
+                res.sendStatus(401);
+                return;
+            }
+            if (data) {
+                if (data.owner !== req.user.email) {
+                    res.status(401);
+                    res.json({message: "Could not find user"});
+                    return
+                }
+                await db.collection("chatrooms").deleteOne(
+                    {_id: id},
+                );
+                res.status(201);
+                res.json({message: "Successfully deleted chatroom!"});
+            } else {
+                res.json({message: "Could not find chatroom to delete! (did you already delete it?)"});
+            }
+        } catch (e) {
+            res.json({message: "Something went wrong in the server, message: " + e.message});
+        }
+    })
+
 
     return router;
 }

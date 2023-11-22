@@ -41,7 +41,7 @@ function EntraLoginButton({applicationConfig}) {
     return <>
         <div style={{padding:"15px"}}>
             <a href={authorizationUrl} className={"entraIdLoginButton"}>
-                Log in with Entra ID
+                Log in with Microsoft
             </a>
         </div>
     </>

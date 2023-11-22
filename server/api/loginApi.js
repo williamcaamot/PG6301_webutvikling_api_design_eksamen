@@ -103,7 +103,8 @@ function loginAPI(db) {
             const email = req.params.email;
             const data = await db.collection("users").findOne({email: email});
             if (!req.user) {
-                res.sendStatus(401);
+                res.status(401);
+                res.json({message:"You must be logged in to change user details!"});
                 return;
             }
             if(req.body.nickname.length < 5){
@@ -137,7 +138,6 @@ function loginAPI(db) {
         }catch (e) {
             res.json({message: "Something went wrong in the server, message: " + e.message});
         }
-
     })
 
 
