@@ -1,6 +1,4 @@
 import React from "react";
-import GoogleLoginButton from "../login/GoogleLoginButton.jsx";
-import EntraLoginButton from "../login/EntraIdLoginButton.jsx";
 function Home() {
   return (
     <>

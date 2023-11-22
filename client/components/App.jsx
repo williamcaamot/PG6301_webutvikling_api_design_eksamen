@@ -55,13 +55,11 @@ export function App() {
             element={<GoogleLoginCallback />}
           />
           <Route path={"/login"} element={<Login />} />
-          <Route path={"/profile"} element={<PersonalProfilePage />} />{" "}
-          {/*PERSONAL*/}
+          <Route path={"/profile"} element={<PersonalProfilePage />} />
           <Route
             path={"/profile/:email"}
             element={<ExternalProfilePage />}
           />{" "}
-          {/*SEE OTHERS PROFILE*/}
           <Route path={"/chat"} element={<Chat />} />
           <Route path={"/chatroom/add"} element={<AddNewChatroom />} />
           <Route path={"/chatroom/edit/:id"} element={<EditChatRoom />} />

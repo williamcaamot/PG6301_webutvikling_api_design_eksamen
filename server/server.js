@@ -26,7 +26,7 @@ const sockets = [];
 
 app.use("/api/v1", loginApi(db));
 app.use("/api/v1", profileApi(db));
-app.use("/api/v1", chatApi(db, sockets));
+app.use("/api/v1", chatApi(db));
 
 app.use(express.static("../client/dist/"));
 app.use((req, res, next) => {
@@ -66,7 +66,7 @@ server.on("upgrade", (req, socket, head) => {
           time: new Date(),
         };
         if (message.length !== 0) {
-          //not sennding empty messages
+          //not sending empty messages
           for (const s of sockets) {
             s.send(
               JSON.stringify({
@@ -76,7 +76,7 @@ server.on("upgrade", (req, socket, head) => {
             );
           }
           const id = new ObjectId(chatroomid);
-          let resdata = await db
+          await db
             .collection("chatrooms")
             .updateOne({ _id: id }, { $push: { messages: newMessage } });
         }

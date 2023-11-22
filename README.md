@@ -29,13 +29,14 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 - Brukere kan fortsatt sende chatmeldinger dersom de logget ut fra et annet vindu
 - Hvis MongoDB atlas er TREGT kan det være problemer verifisering av å opprette nye chatroom (at samme navn ikke eksisterer fra før av)
 
-### Ressurser brukt:
-
+### Ressurser/kilder brukt:
+- https://www.w3resource.com/mongodb/mongodb-array-update-operator-$push.php
 - https://stackoverflow.com/questions/68692385/mock-router-in-react-testing-library-and-jest
+- https://stackoverflow.com/questions/47656515/updateone-on-mongodb-not-working-in-node-js
 - MongoDB Dokumentasjon på https://www.mongodb.com ble hyppig brukt.
 - Mye inspirasjon til testing og login funksjonalitet er hentet fra GH siden til kurset (https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming)
 - Egne tidligere prosjekter i React & Express
 
 ### "Kode du ikke har skrevet eller du har delt med andre.."
 
-- Jeg har
+- 

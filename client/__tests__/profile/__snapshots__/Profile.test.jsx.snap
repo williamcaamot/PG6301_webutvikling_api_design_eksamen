@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`show user profile details render a user profile with information 1`] = `
-<div>
+<div
+  style={
+    {
+      "display": "flex",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
   <div
     className="userProfile"
   >

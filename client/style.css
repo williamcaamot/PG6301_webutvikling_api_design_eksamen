@@ -160,8 +160,8 @@ span {
 }
 
 .successMessage {
-  background-color: #ddffdd;
-  border-left: 6px solid #4caf50;
+  background-color: #c5e1c5;
+  border-left: 6px solid #429d46;
   padding: 12px;
   border-radius: 4px;
   font-family: Arial, sans-serif;
@@ -170,12 +170,12 @@ span {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .successMessage p {
-  color: #155724;
+  color: #0a5b1a;
 }
 
 .errorMessage {
-  background-color: #ffdddd;
-  border-left: 6px solid #f44336;
+  background-color: #e8c9c9;
+  border-left: 6px solid #e52a1e;
   padding: 12px;
   border-radius: 4px;
   font-family: Arial, sans-serif;
@@ -184,7 +184,7 @@ span {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .errorMessage p {
-  color: #d8000c;
+  color: #c40009;
 }
 
 .chatRoomListing {

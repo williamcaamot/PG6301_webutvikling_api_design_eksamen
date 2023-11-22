@@ -2,40 +2,45 @@ import fetchJSON from "./fetchJSON.js";
 import { Timestamp } from "mongodb";
 
 export async function fetchUserInfo(openid_configuration, access_token, db) {
-  const { userinfo_endpoint } = await fetchJSON(openid_configuration);
-  const res = await fetch(userinfo_endpoint, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-  if (res.ok) {
-    const data = await res.json();
-    if (await db.collection("users").findOne({ email: data.email })) {
-      try {
-        //TODO this needs some rework if it's supposed to work if someone changes their openid account details...
-        const userFromDb = await db
-          .collection("users")
-          .findOne({ email: data.email });
-        data.nickname = userFromDb.nickname;
-        data.bio = userFromDb.bio;
-      } catch (e) {
-        console.log(e.message);
+  try{
+    const { userinfo_endpoint } = await fetchJSON(openid_configuration);
+    const res = await fetch(userinfo_endpoint, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (await db.collection("users").findOne({ email: data.email })) {
+        try {
+          //TODO this needs some rework if it's supposed to work if someone changes their openid account details...
+          const userFromDb = await db
+              .collection("users")
+              .findOne({ email: data.email });
+          data.nickname = userFromDb.nickname;
+          data.bio = userFromDb.bio;
+        } catch (e) {
+          console.log(e.message);
+        }
+      } else {
+        try {
+          data.bio =
+              "Som alle andre på denne siden, er jeg en STOR fan av online chat-rom!";
+          data.nickname = data.given_name || data.givenname;
+          await db.collection("users").insertOne(data);
+        } catch (e) {
+          console.log(e.message);
+        }
       }
-    } else {
-      try {
-        data.bio =
-          "Som alle andre på denne siden, er jeg en STOR fan av online chat-rom!";
-        data.nickname = data.given_name || data.givenname;
-        await db.collection("users").insertOne(data);
-      } catch (e) {
-        console.log(e.message);
-      }
-    }
 
-    return data; //Goal is to return a user with additional information NOT from openid
-  } else if (res.status !== 401) {
-    throw new Error("Failed to fetch userinfo " + res.statusCode);
+      return data; //Goal is to return a user with additional information NOT from openid
+    } else if (res.status !== 401) {
+      throw new Error("Failed to fetch userinfo " + res.statusCode);
+    }
+  }catch (e) {
+    console.log(e.message);
   }
+
 }
 
 export function userinfoMiddleware(db) {

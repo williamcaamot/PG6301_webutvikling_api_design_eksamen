@@ -25,14 +25,16 @@ exports[`edit user component should render the edit user component 1`] = `
       onSubmit={[Function]}
     >
       <p>
-        Nickname: 
+        Nickname:
+         
         <input
           onInput={[Function]}
           value="WILLIAM123wwwww"
         />
       </p>
       <p>
-        Bio: 
+        Bio:
+         
         <input
           onInput={[Function]}
           value="dawawddawJeg er kul"

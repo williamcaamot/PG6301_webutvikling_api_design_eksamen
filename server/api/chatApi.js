@@ -1,7 +1,7 @@
 import express from "express";
 import { ObjectId } from "mongodb";
 
-function chatApi(db, sockets) {
+function chatApi(db) {
   const router = express.Router();
 
   router.get("/chatroom/:id", async (req, res) => {

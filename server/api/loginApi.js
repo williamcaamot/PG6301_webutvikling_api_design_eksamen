@@ -10,7 +10,7 @@ function loginAPI(db) {
   // GOOGLE
   userRouter.get("/config/google", (req, res) => {
     try {
-      const user = req.user; //Don't really need user here because of the login endpoint further down
+      const user = req.user; //Don't really need user here because of the login endpoint further down (probably...?)
       res.send({ user, openid_configuration, client_id });
     } catch (e) {
       console.log(e.message);
