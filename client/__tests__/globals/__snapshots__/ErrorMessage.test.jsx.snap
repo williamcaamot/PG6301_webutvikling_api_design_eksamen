@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`error message show a error message 1`] = `
+<div
+  style={
+    {
+      "paddingBottom": "10px",
+      "paddingTop": "10px",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="errorMessage"
+  >
+    <p>
+      This is an error!
+    </p>
+  </div>
+</div>
+`;

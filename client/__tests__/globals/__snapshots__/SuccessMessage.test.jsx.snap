@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`error message show a success message! 1`] = `
+<div
+  style={
+    {
+      "paddingBottom": "10px",
+      "paddingTop": "10px",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="successMessage"
+  >
+    <p>
+      This is a success message!
+    </p>
+  </div>
+</div>
+`;
