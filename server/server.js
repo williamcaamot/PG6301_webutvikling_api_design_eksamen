@@ -7,6 +7,7 @@ import loginApi from "./api/loginApi.js";
 import {userinfoMiddleware} from "./api/userInfoMiddleware.js";
 import chatApi from "./api/chatApi.js";
 import {WebSocketServer} from "ws";
+import profileApi from "./api/profileApi.js";
 
 const app = express();
 const port = 3002;
@@ -25,6 +26,7 @@ app.use(userinfoMiddleware(db));
 const sockets = [];
 
 app.use("/api/v1", loginApi(db));
+app.use("/api/v1", profileApi(db));
 app.use("/api/v1", chatApi(db, sockets));
 
 

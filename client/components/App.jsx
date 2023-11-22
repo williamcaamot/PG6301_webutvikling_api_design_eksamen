@@ -13,6 +13,7 @@ import ExternalProfilePage from "./profile/ExternalProfilePage.jsx";
 import editProfilePage from "./profile/EditProfilePage.jsx";
 import EditProfilePage from "./profile/EditProfilePage.jsx";
 import EditChatRoom from "./chat/EditChatRoom.jsx";
+import ErrorMessage from "./globals/ErrorMessage.jsx";
 
 
 export const AppContext = createContext();
@@ -23,15 +24,18 @@ export function App() {
     const [user, setUser] = useState(null);
 
     async function fetchUser() {
-        const res = await fetch("/api/v1/login");
-        if (res.status === 401) {
-            setUser(undefined);
-
-        } else {
-            const user = await res.json();
-            setUser(user);
-            console.log(user)
+        try {
+            const res = await fetch("/api/v1/login");
+            if (res.status === 401) {
+                setUser(undefined);
+            } else {
+                const {message, data} = await res.json();
+                setUser(data);
+            }
+        }catch (e) {
+            setErrorMessage(e.message);
         }
+
     }
 
     useEffect(() => {
@@ -41,21 +45,22 @@ export function App() {
 
     return <AppContext.Provider value={{user, setUser}}>
         <BrowserRouter>
-        <Header/>
-        <Routes>
-            <Route path={"/login/callback/entraid"} element={<EntraIdLoginCallback/>}/>
-            <Route path={"login/callback/google"} element={<GoogleLoginCallback/>}/>
-            <Route path={"/login"} element={<Login/>}/>
-            <Route path={"/profile"} element={<PersonalProfilePage/>}/> {/*PERSONAL*/}
-            <Route path={"/profile/:email"} element={<ExternalProfilePage/>}/> {/*SEE OTHERS PROFILE*/}
-            <Route path={"/chat"} element={<Chat/>}/>
-            <Route path={"/chatroom/add"} element={<AddNewChatroom/>}/>
-            <Route path={"/chatroom/edit/:id"} element={<EditChatRoom/>}/>
-            <Route path={"/profile/edit"} element={<EditProfilePage/>}/>
-            <Route path={"/"} element={<Home/>}/>
-        </Routes>
+            <ErrorMessage message={errorMessage}/>
+            <Header/>
+            <Routes>
+                <Route path={"/login/callback/entraid"} element={<EntraIdLoginCallback/>}/>
+                <Route path={"login/callback/google"} element={<GoogleLoginCallback/>}/>
+                <Route path={"/login"} element={<Login/>}/>
+                <Route path={"/profile"} element={<PersonalProfilePage/>}/> {/*PERSONAL*/}
+                <Route path={"/profile/:email"} element={<ExternalProfilePage/>}/> {/*SEE OTHERS PROFILE*/}
+                <Route path={"/chat"} element={<Chat/>}/>
+                <Route path={"/chatroom/add"} element={<AddNewChatroom/>}/>
+                <Route path={"/chatroom/edit/:id"} element={<EditChatRoom/>}/>
+                <Route path={"/profile/edit"} element={<EditProfilePage/>}/>
+                <Route path={"/"} element={<Home/>}/>
+            </Routes>
 
 
-    </BrowserRouter>
+        </BrowserRouter>
     </AppContext.Provider>
 }

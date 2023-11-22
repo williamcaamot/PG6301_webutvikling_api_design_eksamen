@@ -29,48 +29,17 @@ function chatApi(db, sockets) {
                 res.json({message: "You must be logged inn to list your chat rooms!"});
                 return;
             }
+            if(req.user.email !== req.params.email){
+                res.status(401);
+                res.json({message:"You can not list other peoples chat rooms"});
+                return;
+            }
             const email = req.params.email;
             const data = await db.collection("chatrooms").find({owner: email}).toArray();
-            console.log(data);
             res.status(200);
             res.json({message: "Successfully found chat rooms to user", data: data});
         } catch (e) {
 
-            res.status(404)
-            res.json({message: "Something went wrong in the server, message: " + e.message});
-        }
-    })
-
-
-    //TODO REMOVE THIS ONCE CERTAIN IT IS NO LONGER IN USE (REPLACED BY SOCKETS!)
-    router.post("/chatroom/:id", async (req, res) => {
-        console.log("Someone sending message");
-        try {
-            if (!req.user) {
-                res.status(401);
-                res.json({message: "You must be logged in to view messages in chatrooms!"});
-                return;
-            }
-            console.log(req.body)
-            const message = {
-                sender: req.user.email,
-                nickname: req.user.nickname,
-                picture: req.user.picture,
-                message: req.body.message,
-                time: new Date(),
-            }
-            console.log(message);
-            const id = new ObjectId(req.params.id);
-            let resdata = await db.collection("chatrooms").updateOne(
-                {_id: id},
-                {$push: {messages: message}}
-            );
-            for (const s of sockets) {
-                s.send(`Updated ${new Date()}`);
-            }
-            res.status(200); //TODO fix status code
-            res.json({message: "Success", data: resdata});
-        } catch (e) {
             res.status(404)
             res.json({message: "Something went wrong in the server, message: " + e.message});
         }
@@ -125,7 +94,7 @@ function chatApi(db, sockets) {
             }
             const dbres = await db.collection("chatrooms").insertOne(chatroom);
             res.status(201);
-            res.json({message: `Sucessfully added the chatroom with ID: ${dbres.insertedId}`, data: dbres});
+            res.json({message: `Sucessfully added the chatroom with ID: ${dbres.insertedId}`, data: dbres.insertedId});
 
         } catch (e) {
             res.json({message: "Something went wrong in the server, message: " + e.message});

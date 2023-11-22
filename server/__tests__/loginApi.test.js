@@ -28,32 +28,39 @@ afterAll(async () => {
 
 
 describe("login api", () => {
-    it('should get google config', async() => {
+    it("should get google config", async() => {
         const res = await request(app).get("/config/google");
         expect(res.status).toBe(200);
         expect(res.body.openid_configuration.includes("google")).toBe(true);
         expect(res.body.client_id.length).toBeGreaterThan(10);
     });
 
-    it('should get entraid config', async() => {
+    it("should try login with google and return 401", async() => {
+        const res = await request(app).post("/login/google");
+        expect(res.status).toBe(401);
+    })
+
+    it("should get entraid config", async() => {
         const res = await request(app).get("/config/entraid");
         expect(res.status).toBe(200);
         expect(res.body.openid_configuration_entraid.includes("microsoftonline")).toBe(true);
         expect(res.body.client_id_entraid.length).toBeGreaterThan(10);
     });
 
-    it('should delete cookies and return 204', async() => {
+    it("should try login with google and return 401", async() => {
+        const res = await request(app).post("/login/entraid");
+        expect(res.status).toBe(401);
+    })
+
+
+    it("should delete cookies and return 204", async() => {
         const res = await request(app).delete("/login");
         expect(res.status).toBe(204);
     })
 
-    it('should try login with google and return 401', async() => {
-        const res = await request(app).post("/login/google");
-        expect(res.status).toBe(401);
-    })
-
-    it('should try login with google and return 401', async() => {
-        const res = await request(app).post("/login/entraid");
+    it("should return not logged in message with 401 status code", async() => {
+        const res = await request(app).get("/login");
+        const {message, data} = await JSON.stringify(res);
         expect(res.status).toBe(401);
     })
 
