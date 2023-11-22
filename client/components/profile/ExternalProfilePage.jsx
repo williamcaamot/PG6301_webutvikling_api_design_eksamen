@@ -17,7 +17,7 @@ function ExternalProfilePage() {
       const { message, data } = await res.json();
 
       if (res.status !== 200) {
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
         return;
       }
       setUser(data);

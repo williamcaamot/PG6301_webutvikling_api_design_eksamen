@@ -43,7 +43,7 @@ function EditProfilePage() {
       setErrorMessage(null);
       navigate("/profile");
     } else {
-      setErrorMessage(message);
+      setErrorMessage(message || "En ukjent feil har oppstått");
     }
   }
 

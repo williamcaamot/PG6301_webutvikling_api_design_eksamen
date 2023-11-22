@@ -21,7 +21,7 @@ function EditChatRoom() {
       const { message, data } = await res.json();
       if (res.status !== 200) {
         setMessages([]);
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
         return;
       }
       setChatRoom(data);
@@ -57,7 +57,7 @@ function EditChatRoom() {
         setSuccessMessage(message);
       } else {
         setSuccessMessage(null);
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
       }
     } catch (e) {
       setSuccessMessage(null);
@@ -79,7 +79,7 @@ function EditChatRoom() {
         setSuccessMessage(message);
       } else {
         setSuccessMessage(null);
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
       }
     } catch (e) {
       setSuccessMessage(null);

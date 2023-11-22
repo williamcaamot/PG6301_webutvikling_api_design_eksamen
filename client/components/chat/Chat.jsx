@@ -19,7 +19,7 @@ export function Chat() {
       const res = await fetch("/api/v1/chatroom");
       const { message, data } = await res.json();
       if (res.status !== 200) {
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
         return;
       }
       setChatRooms(data);
@@ -42,7 +42,7 @@ export function Chat() {
     ws.onmessage = (event) => {
       const { chatroomid, message, errormessage } = JSON.parse(event.data);
       if (errormessage) {
-        setErrorMessage(errormessage);
+        setErrorMessage(errormessage || "En ukjent feil har oppstått");
         return;
       }
       if (chatroomid === activeChatRoom) {

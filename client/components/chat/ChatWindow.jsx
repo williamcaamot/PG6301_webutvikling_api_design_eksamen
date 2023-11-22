@@ -26,7 +26,7 @@ function ChatWindow(props) {
       const { message, data } = await res.json();
       if (res.status !== 200) {
         setMessages([]);
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
         return;
       }
       setMessages(data.messages);

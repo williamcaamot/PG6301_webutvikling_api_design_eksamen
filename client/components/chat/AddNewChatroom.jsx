@@ -29,7 +29,7 @@ function AddNewChatroom() {
       if (res.status !== 201) {
         //TODO Make this logic better
         setSuccessMessage(null);
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
         return;
       }
       setErrorMessage(null);

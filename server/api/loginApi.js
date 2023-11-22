@@ -40,7 +40,7 @@ function loginAPI(db) {
             date: new Date(),
           });
         res.status(201);
-        res.json(userDetails(user));
+        res.json({message:"Successfully logged in", data:userDetails(user)});
       } else {
         res.sendStatus(401);
       }
@@ -91,7 +91,7 @@ function loginAPI(db) {
             date: new Date(),
           });
         res.status(201);
-        res.json(userDetails(user));
+        res.json({message:"Successfully logged in", data:userDetails(user)});
       } else {
         res.sendStatus(401);
       }

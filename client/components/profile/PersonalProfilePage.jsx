@@ -30,7 +30,7 @@ function PersonalProfilePage() {
       const res = await fetch(`/api/v1/chatroom/owner/${user.email}`);
       const { message, data } = await res.json();
       if (res.status !== 200) {
-        setErrorMessage(message);
+        setErrorMessage(message || "En ukjent feil har oppstått");
         return;
       }
       setChatRooms(data);
