@@ -7,7 +7,7 @@ function Profile(props) {
 
   if (props.user)
     return (
-      <div>
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <div className={"userProfile"}>
           <img src={props.user.picture} alt="User Profile" />
           <p>Kallenavn: {props.user.nickname} </p>

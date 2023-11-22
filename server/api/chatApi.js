@@ -108,7 +108,7 @@ function chatApi(db, sockets) {
       const dbres = await db.collection("chatrooms").insertOne(chatroom);
       res.status(201);
       res.json({
-        message: `Sucessfully added the chatroom with ID: ${dbres.insertedId}`,
+        message: `Sucessfully added the chatroom with title: ${req.body.title}`,
         data: dbres.insertedId,
       });
     } catch (e) {
@@ -127,7 +127,6 @@ function chatApi(db, sockets) {
         });
         return;
       }
-      const id = new ObjectId(req.params.id);
       if (req.body.title.length < 5 || req.body.description < 5) {
         res.status(409);
         res.json({
@@ -145,6 +144,7 @@ function chatApi(db, sockets) {
         title: req.body.title,
         description: req.body.description,
       };
+      const id = new ObjectId(req.params.id);
       const data = await db.collection("chatrooms").findOne({ _id: id });
       if (data) {
         if (data.owner !== req.user.email) {

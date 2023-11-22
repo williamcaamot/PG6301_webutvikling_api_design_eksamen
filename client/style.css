@@ -195,6 +195,7 @@ span {
   background-color: var(--primary-color);
   border-radius: 10px;
   cursor: pointer;
+  overflow-wrap: break-word;
 }
 .chatRoomListing:hover {
   background-color: var(--accent-color);
@@ -243,8 +244,6 @@ input {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-  margin: auto; /*Har NESTEN ikke brukt margin :D */
 }
 
 .userProfile img {

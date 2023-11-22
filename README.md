@@ -21,14 +21,6 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 - [x] Brukere forblir innlogget når de refresher siden
 - [x] De ALLER fleste feil presenteres til brukeren (alle feil jeg klarer å produsere...)
 
-## TODO
-
-- [x] Add feature so users can edit their chatrooms
-- [x] Add feature so users can edit their nickname and bio
-- [ ] Better error handling (EVERYWHERE?)
-- [x] Make sure only logged in users can see and open chatrooms and messages
-- [ ] TESTS!!!
-
 ### Kjente feil:
 
 - Dersom en bruker endrer brukernavn, er det ikke satt opp relasjoner i databsen slik at brukernavnet oppdaters på meldinger som tidligere er sendt.
