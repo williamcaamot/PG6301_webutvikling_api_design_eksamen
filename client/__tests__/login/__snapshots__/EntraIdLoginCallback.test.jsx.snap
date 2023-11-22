@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`header component display the header with user information 1`] = `
+<div
+  className="pageContentWrapper"
+>
+  <div
+    className="innerWrapper"
+  >
+    <h2>
+      Logging in with Entra ID... Please wait
+    </h2>
+  </div>
+</div>
+`;
