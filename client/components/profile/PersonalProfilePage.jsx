@@ -59,7 +59,11 @@ function PersonalProfilePage() {
             chatRooms.map((chatroom) => {
               return (
                 <>
-                  <ChatRoomListing chatRoom={chatroom} user={user} />
+                  <ChatRoomListing
+                    chatRoom={chatroom}
+                    user={user}
+                    key={chatroom._id}
+                  />
                 </>
               );
             })}

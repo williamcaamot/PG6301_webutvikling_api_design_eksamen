@@ -32,7 +32,7 @@ export async function fetchUserInfo(openid_configuration, access_token, db) {
         }
       }
 
-      return data; //Goal is to return a user with additional information NOT from openid
+      return data; //DONE: Goal is to return a user with additional information NOT from openid - with custom info
     } else if (res.status !== 401) {
       throw new Error("Failed to fetch userinfo " + res.statusCode);
     }

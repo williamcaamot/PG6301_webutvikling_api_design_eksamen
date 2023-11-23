@@ -9,7 +9,6 @@ function EntraIdLoginCallback({}) {
   const [successMessage, setSuccessMessage] = useState();
 
   const navigate = useNavigate();
-  const [error, setError] = useState();
   const { setUser } = useContext(AppContext);
 
   const client_id = "57350161-fcb3-43d0-a7e7-0c2ba9658b8e";
@@ -25,7 +24,7 @@ function EntraIdLoginCallback({}) {
       );
 
       if (state !== window.sessionStorage.getItem("state")) {
-        setError("Invalid state");
+        setErrorMessage("Invalid state");
         return;
       }
 

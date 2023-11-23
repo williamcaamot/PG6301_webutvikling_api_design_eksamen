@@ -27,7 +27,7 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 - Dersom en bruker endrer nickname, er det ikke satt opp relasjoner i databsen slik at brukernavnet oppdaters på meldinger som tidligere er sendt.
 - Bilder på brukere med EntraID fungerer ikke
 - Brukere kan fortsatt sende chatmeldinger dersom de logget ut fra et annet vindu
-- Hvis MongoDB atlas er TREGT kan det være problemer verifisering av å opprette nye chatroom (at samme navn ikke eksisterer fra før av)
+- Hvis MongoDB atlas er TREGT kan det være problemer verifisering av å opprette nye chatroom (at samme navn ikke kan eksistere to ganger)
 
 ### Ressurser/kilder brukt:
 
@@ -37,5 +37,5 @@ Link to github classroom repo: https://github.com/kristiania-pg6301-2023/pg6301e
 - https://stackoverflow.com/questions/49603939/message-async-callback-was-not-invoked-within-the-5000-ms-timeout-specified-by
 - https://react.dev/reference/react/createContext
 - MongoDB Dokumentasjon på https://www.mongodb.com ble hyppig brukt.
-- Mye inspirasjon til testing og login funksjonalitet er hentet fra GH siden til kurset (https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming)
+- Mye inspirasjon, spesielt til testing, login og websockets funksjonalitet er hentet fra GH siden til kurset (https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming)
 - Egne tidligere prosjekter i React & Express

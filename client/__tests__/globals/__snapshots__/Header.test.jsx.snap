@@ -39,7 +39,7 @@ exports[`header component display the header with user information 1`] = `
           href="/chatroom/add"
           onClick={[Function]}
         >
-          Add new chat room
+          Legg til nytt chat rom
         </a>
         <a
           className="mainMenuLink"
@@ -94,7 +94,7 @@ exports[`header component display the header without user information 1`] = `
           href="/chatroom/add"
           onClick={[Function]}
         >
-          Add new chat room
+          Legg til nytt chat rom
         </a>
         <a
           className="mainMenuLink"

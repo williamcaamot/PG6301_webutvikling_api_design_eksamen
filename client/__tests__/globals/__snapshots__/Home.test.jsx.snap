@@ -19,6 +19,9 @@ exports[`Home component Should display the home component 1`] = `
       </h2>
     </div>
     <p>
+      Dette er eksamnsoppgave i Webutvikling & API Design! 
+    </p>
+    <p>
       Her kan alle registrerte brukere chatte med hverandre i forskjellige chat rom.
     </p>
     <p>
